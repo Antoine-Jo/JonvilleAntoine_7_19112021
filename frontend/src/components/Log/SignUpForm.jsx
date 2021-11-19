@@ -1,0 +1,41 @@
+import React, { useState } from 'react';
+import Field from '../Field';
+
+const SignUpForm = () => {
+
+    const [state, setState] = useState({
+        nom: '',
+        prenom: '',
+        email: '',
+        password: '',
+    });
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const formulaire = [];
+        const data = JSON.stringify(state)
+        setState({
+            nom: '',
+            prenom: '',
+            email: '',
+            password: '',
+        })
+        // console.log(data);
+        formulaire.push(data)
+        localStorage.setItem('form', JSON.stringify(formulaire))
+
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <Field type='text' name='nom' value={state.nom} onChange={(e) => setState({ ...state, nom: e.target.value})}>Nom</Field>
+            <Field type='text' name='prenom' value={state.prenom} onChange={(e) => setState({ ...state, prenom: e.target.value})}>Prénom</Field>
+            <Field type='email' name='email' value={state.email} onChange={(e) => setState({ ...state, email: e.target.value})}>E-mail</Field>
+            <Field type='password' name='password' value={state.password} onChange={(e) => setState({ ...state, password: e.target.value})}>Mot de passe</Field>
+            <button>Envoyer</button>
+            {JSON.stringify(state)}
+        </form>
+    );
+};
+
+export default SignUpForm;
