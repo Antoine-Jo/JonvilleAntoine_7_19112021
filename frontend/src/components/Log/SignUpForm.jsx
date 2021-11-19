@@ -24,7 +24,6 @@ const SignUpForm = () => {
         // console.log(data);
         formulaire.push(data)
         localStorage.setItem('form', JSON.stringify(formulaire))
-
     }
 
     return (
