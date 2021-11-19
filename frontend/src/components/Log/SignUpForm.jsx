@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '../Button';
 import Field from '../Field';
 
 const SignUpForm = () => {
@@ -32,7 +33,7 @@ const SignUpForm = () => {
             <Field type='text' name='prenom' value={state.prenom} onChange={(e) => setState({ ...state, prenom: e.target.value})}>Prénom</Field>
             <Field type='email' name='email' value={state.email} onChange={(e) => setState({ ...state, email: e.target.value})}>E-mail</Field>
             <Field type='password' name='password' value={state.password} onChange={(e) => setState({ ...state, password: e.target.value})}>Mot de passe</Field>
-            <button>Envoyer</button>
+            <Button>Envoyer</Button>
             {JSON.stringify(state)}
         </form>
     );
