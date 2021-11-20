@@ -3,7 +3,8 @@
     width: 100%;
     height: auto;
     display: inline-flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -16,4 +17,5 @@
 .header_title {
     color: #fff;
     margin: 20px;
+    text-align: center;
 }
