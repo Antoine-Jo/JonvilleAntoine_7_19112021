@@ -1,0 +1,36 @@
+.form_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.form_field {
+   display: grid;
+   grid-template-columns: 0.8fr 1fr;
+   margin-bottom: 20px;
+   margin-top: 10px;
+   height: 1.5em;
+}
+
+.form_field label {
+    font-weight: bold;
+}
+
+button {
+    width: 10em;
+    height: 3em;
+    font-size: 1.1em;
+    background-color: #1DA1F2;
+    color: #fff;
+    border-radius: 20px;
+    border: 1px solid #1DA1F2;
+    box-shadow: 5px 5px 5px grey;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    filter: brightness(130%);
+    transform: scale(1.1);
+}
