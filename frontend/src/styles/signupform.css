@@ -7,14 +7,18 @@
 
 .form_field {
    display: grid;
-   grid-template-columns: 0.8fr 1fr;
-   margin-bottom: 20px;
+   grid-template-columns: 1.5fr 1fr;
+   margin-bottom: 10px;
    margin-top: 10px;
-   height: 1.5em;
+   height: 1.8em;
 }
 
 .form_field label {
     font-weight: bold;
+}
+
+p {
+    margin: 0;
 }
 
 button {
