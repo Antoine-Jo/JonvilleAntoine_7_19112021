@@ -18,27 +18,27 @@ const SignUpForm = () => {
     
     useEffect(() => {
         
-        if(!validName.test(name)) {
+        if(!validName.test(name) && name.length > 2) {
             setNameErr(true)
         } else {
             setNameErr(false)
         }
-        if(!validName.test(prenom)) {
+        if(!validName.test(prenom) && prenom.length > 2) {
             setPrenomErr(true)
         } else {
             setPrenomErr(false)
         }
-        if(!validEmail.test(email)) {
+        if(!validEmail.test(email) && email.length > 5) {
             setEmailErr(true)
         } else {
             setEmailErr(false)
         }
-        if(!validPassword.test(password)) {
+        if(!validPassword.test(password) && password.length > 5) {
             setPwdErr(true)
         } else {
             setPwdErr(false)
         }
-        if (ctrlPwd !== password) {
+        if (ctrlPwd !== password && ctrlPwd.length > 5) {
             setCtrlPwdErr(true)
         } else {
             setCtrlPwdErr(false)

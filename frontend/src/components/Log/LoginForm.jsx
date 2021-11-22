@@ -11,12 +11,12 @@ const LoginForm = () => {
 
     useEffect(() => {
         
-        if (!validEmail.test(email)) {
+        if (!validEmail.test(email) && email.length > 5) {
             setEmailErr(true)
         } else {
             setEmailErr(false)
         }
-        if (!validPassword.test(password)) {
+        if (!validPassword.test(password) && password.length > 5) {
             setPwdErr(true)
         } else {
             setPwdErr(false)
