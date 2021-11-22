@@ -34,3 +34,8 @@ button:hover {
     filter: brightness(130%);
     transform: scale(1.1);
 }
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
