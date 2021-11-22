@@ -16,8 +16,8 @@ const SignUpForm = () => {
     const [pwdErr, setPwdErr] = useState(false)
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
     
-    
     useEffect(() => {
+        
         if(!validName.test(name)) {
             setNameErr(true)
         } else {
