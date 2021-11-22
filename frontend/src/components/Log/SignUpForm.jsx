@@ -73,7 +73,6 @@ const SignUpForm = () => {
             <Field type='password' name='password' value={password} onChange={checkPwd}>Mot de passe</Field>
             {pwdErr && <p className="password error">Le mot de passe doit contenir 8 caractères, une lettre, un chiffre.</p>}
             <Button type='submit'>S'inscrire</Button>
-            {/* {JSON.stringify(state)} */}
         </form>
     );
 };
