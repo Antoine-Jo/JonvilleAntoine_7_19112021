@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../Button';
 import Field from '../Field';
-import { validEmail, validPassword, validName } from './Regex';
+import { validEmail, validPassword, validName } from '../../services/validateFields';
 import '../../styles/signupform.css'
 
 const SignUpForm = () => {
@@ -17,71 +17,19 @@ const SignUpForm = () => {
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
     
     useEffect(() => {
-        
-        if(!validName.test(name) && name.length > 2) {
-            setNameErr(true)
-        } else {
-            setNameErr(false)
-        }
-        if(!validName.test(prenom) && prenom.length > 2) {
-            setPrenomErr(true)
-        } else {
-            setPrenomErr(false)
-        }
-        if(!validEmail.test(email) && email.length > 5) {
-            setEmailErr(true)
-        } else {
-            setEmailErr(false)
-        }
-        if(!validPassword.test(password) && password.length > 5) {
-            setPwdErr(true)
-        } else {
-            setPwdErr(false)
-        }
-        if (ctrlPwd !== password && ctrlPwd.length > 5) {
-            setCtrlPwdErr(true)
-        } else {
-            setCtrlPwdErr(false)
-        }
+
+        setNameErr(validName(name)); 
+        setPrenomErr(validName(prenom));
+        setEmailErr(validEmail(email));
+        setPwdErr(validPassword(password));
+        setCtrlPwdErr(password !== ctrlPwd && ctrlPwd.length > 5)
     }, [name, prenom, email, password, ctrlPwd])
-
-    // useEffect(() => {
-    //     if(!validName.test(prenom)) {
-    //         setPrenomErr(true)
-    //     } else {
-    //         setPrenomErr(false)
-    //     }
-    // }, [prenom])
-
-    // useEffect(() => {
-    //     if(!validEmail.test(email)) {
-    //         setEmailErr(true)
-    //     } else {
-    //         setEmailErr(false)
-    //     }
-    // }, [email])
-
-    // useEffect(() => {
-    //     if(!validPassword.test(password)) {
-    //         setPwdErr(true)
-    //     } else {
-    //         setPwdErr(false)
-    //     }
-    // }, [password])
-
-    // useEffect(() => {
-    //     if (ctrlPwd !== password) {
-    //         setCtrlPwdErr(true)
-    //     } else {
-    //         setCtrlPwdErr(false)
-    //     }
-    // }, [ctrlPwd, password])
 
     const validate = (e) => {
         e.preventDefault()
         
-        if (validEmail.test(email) && validPassword.test(password) && validName.test(name) && validName.test(prenom) && ctrlPwd === password) {
-            window.location = '/home'
+        if (validName(name) && validName(prenom) && validEmail(email) && validPassword(password)) {
+            return window.location = '/home'
         } else {
             e.preventDefault()
         }
@@ -95,9 +43,9 @@ const SignUpForm = () => {
             {prenomErr && <p className="prenom error">Votre prénom doit contenir des lettres uniquement</p>}
             <Field type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}>E-mail</Field>
             {emailErr && <p className="email error">Votre email n'est pas correct</p>}
-            <Field type='text' name='password' value={password} onChange={(e) => setPassword(e.target.value)}>Mot de passe</Field>
+            <Field type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}>Mot de passe</Field>
             {pwdErr && <p className="password error">Le mot de passe doit contenir 8 caractères, une lettre, un chiffre.</p>}
-            <Field type='text' name='password' value={ctrlPwd} onChange={(e) => setCtrlPwd(e.target.value)}>Confirmer mot de passe</Field>
+            <Field type='password' name='password' value={ctrlPwd} onChange={(e) => setCtrlPwd(e.target.value)}>Confirmer mot de passe</Field>
             {ctrlPwdErr && <p className='confirm-password error'>Le mot de passe ne correspond pas.</p>}
             <Button type='submit'>S'inscrire</Button>
         </form>
