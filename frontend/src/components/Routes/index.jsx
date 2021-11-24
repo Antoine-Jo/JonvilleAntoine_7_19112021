@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Subscription from '../../pages/Subscription'
 import Home from '../../pages/Home';
 import Profil from '../../pages/Profil';
+import NotFound from '../../pages/NotFound';
 
 const index = () => {
     return (
@@ -11,6 +12,7 @@ const index = () => {
                 <Route path="/" element={<Subscription />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/profil/:userid" element={<Profil />} />
+                <Route path='/*' element={<NotFound/>} />
             </Routes>
         </BrowserRouter>
     );
