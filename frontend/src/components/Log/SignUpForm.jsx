@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../Button';
 import Field from '../Field';
+import { useNavigate } from 'react-router';
 import { validEmail, validPassword, validName } from '../../services/validateFields';
 import '../../styles/signupform.css'
 
@@ -15,6 +16,7 @@ const SignUpForm = () => {
     const [emailErr, setEmailErr] = useState(false)
     const [pwdErr, setPwdErr] = useState(false)
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
+    const navigate = useNavigate()
     
     useEffect(() => {
 
@@ -28,8 +30,8 @@ const SignUpForm = () => {
     const validate = (e) => {
         e.preventDefault()
         
-        if (validName(name) && validName(prenom) && validEmail(email) && validPassword(password)) {
-            return window.location = '/home'
+        if(!validName(name) && !validName(prenom) && !validEmail(email) && !validPassword(password)) {
+            navigate('/home')
         } else {
             e.preventDefault()
         }

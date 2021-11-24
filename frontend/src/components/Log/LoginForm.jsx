@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../Button';
 import Field from '../Field';
+import { useNavigate } from 'react-router-dom'
 import { validEmail, validPassword } from './Regex';
 
 const LoginForm = () => {
@@ -8,6 +9,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState('')
     const [emailErr, setEmailErr] = useState(false)
     const [pwdErr, setPwdErr] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         
@@ -26,7 +28,7 @@ const LoginForm = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (validEmail.test(email) && validPassword.test(password)){
-            window.location = '/home'
+            navigate('/home')
         } else {
             e.preventDefault()
         }

@@ -10,7 +10,7 @@ const index = () => {
             <Routes>
                 <Route path="/" element={<Subscription />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/profil" element={<Profil />} />
+                <Route path="/profil/:userid" element={<Profil />} />
             </Routes>
         </BrowserRouter>
     );
