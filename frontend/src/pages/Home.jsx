@@ -8,6 +8,7 @@ const Home = () => {
             <Banner/>
             <h1>Je suis l'accueil !</h1>
             <Link to='/profil/:userid'>Votre profil</Link>
+            <Link to='/'>Se déconnecter</Link>
         </div>
     );
 };
