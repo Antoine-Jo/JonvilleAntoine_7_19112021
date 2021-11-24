@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '../Button';
 import Field from '../Field';
 import { useNavigate } from 'react-router-dom'
-import { validEmail, validPassword } from './Regex';
+import { validEmail, validPassword } from '../../services/validateFields';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('')
@@ -12,26 +12,15 @@ const LoginForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        
-        if (!validEmail.test(email) && email.length > 5) {
-            setEmailErr(true)
-        } else {
-            setEmailErr(false)
-        }
-        if (!validPassword.test(password) && password.length > 5) {
-            setPwdErr(true)
-        } else {
-            setPwdErr(false)
-        }
+        setEmailErr(validEmail(email))
+        setPwdErr(validPassword(password))
     }, [email, password])
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (validEmail.test(email) && validPassword.test(password)){
+        if (!validEmail(email) && !validPassword(password)){
             navigate('/home')
-        } else {
-            e.preventDefault()
-        }
+        } 
     }
 
     return (
