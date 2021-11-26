@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../Button';
-import Field from '../Field';
+import Button from './Button';
+import Field from './Field';
 import { useNavigate } from 'react-router';
 import { validEmail, validPassword, validName } from '../../services/validateFields';
 import '../../styles/signupform.css'
@@ -29,11 +29,10 @@ const SignUpForm = () => {
 
     const validate = (e) => {
         e.preventDefault()
-        
-        if(!validName(name) && !validName(prenom) && !validEmail(email) && !validPassword(password)) {
-            navigate('/home')
-        } else {
+        if (name === '' || prenom === '' || email === '' || password === ''  || validName(name) || validName(prenom) || validEmail(email) || validPassword(password)){
             e.preventDefault()
+        } else {
+            navigate('/home')
         }
     }
 

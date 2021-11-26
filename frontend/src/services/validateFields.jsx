@@ -4,8 +4,8 @@ function validEmail(email) {
 }
 
 function validName(name) {
-  if (!regex.name.test(name) && name.length > 2) return true;
-  else return false
+  if (name.length === 0) return false
+  if (!regex.name.test(name)) return true;
 }
 
 function validPassword(password) {

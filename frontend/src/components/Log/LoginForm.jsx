@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../Button';
-import Field from '../Field';
+import Button from './Button';
+import Field from './Field';
 import { useNavigate } from 'react-router-dom'
 import { validEmail, validPassword } from '../../services/validateFields';
 
@@ -18,9 +18,11 @@ const LoginForm = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (!validEmail(email) && !validPassword(password)){
+        if (email === '' || password === '' || validEmail(email) || validPassword(password)) {
+            e.preventDefault();
+        } else {
             navigate('/home')
-        } 
+        }
     }
 
     return (
