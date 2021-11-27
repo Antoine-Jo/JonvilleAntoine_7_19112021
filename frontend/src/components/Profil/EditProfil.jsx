@@ -15,7 +15,7 @@ const EditProfil = () => {
         <div className='profil_container'>
             <div className='profil_header'>
                 <h2 className='profil_title'>Votre profil</h2>
-                <i class="fas fa-times profil_closed" onClick={handleClick}></i>
+                <i className="fas fa-times profil_closed" onClick={handleClick}></i>
             </div>
             <FieldProfil/>
         </div>

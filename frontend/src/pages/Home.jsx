@@ -1,4 +1,5 @@
 import React from 'react';
+import '../components/Home/home.css';
 import Banner from '../components/Header/Banner';
 import HeaderHome from '../components/Home/HeaderHome';
 import Posts from '../components/Home/Posts';
