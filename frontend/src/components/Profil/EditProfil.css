@@ -6,7 +6,8 @@
 }
 
 .profil_title {
-    text-align: center;
+    text-align: end;
+    margin-right: 1.75em;
     font-size: 3em;
 }
 
@@ -20,18 +21,29 @@
 }
 
 .field_profil {
-    display: inline-flex;
+    display: flex;
     width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .field_title {
     width: 50%;
     text-align: center;
     font-size: 2em;
+    margin: 0.5em 0;
 }
 
-.form_field {
-    align-self: center;
-    
+.field_avatar {
+    width: 25%;
+    border: 2px solid grey;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+.field_mail {
+    margin-top: 1em;
+    font-size: 1.5em;
 }
 
