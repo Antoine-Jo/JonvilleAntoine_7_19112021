@@ -6,7 +6,7 @@ const Card = () => {
         <article className='post_container'>
             <img src={logo} alt='avatar author' className='logo_user'/>
             <div className='post_header'>
-                <h3>Auteur</h3>
+                <h3>Auteur du post</h3>
                 <p>Date du post</p>
             </div>
             <p className='post_text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus sint ratione, maxime at officia dolore eum minus neque vero fugit architecto ea iste voluptates a quod corrupti eos iure repellat?</p>
