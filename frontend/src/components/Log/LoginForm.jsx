@@ -3,6 +3,7 @@ import Button from './Button';
 import Field from './Field';
 import { useNavigate } from 'react-router-dom'
 import { validEmail, validPassword } from '../../services/validateFields';
+import axios from 'axios';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('')
@@ -16,12 +17,23 @@ const LoginForm = () => {
         setPwdErr(validPassword(password))
     }, [email, password])
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         if (email === '' || password === '' || validEmail(email) || validPassword(password)) {
             e.preventDefault();
         } else {
-            navigate('/home')
+            await axios({
+                method: 'POST',
+                url: 'http://localhost:5000/api/user/login',
+                data: {
+                    email,
+                    password
+                }
+            })
+            .then((res) => {
+                console.log(res);
+                navigate('/home')
+            })
         }
     }
 

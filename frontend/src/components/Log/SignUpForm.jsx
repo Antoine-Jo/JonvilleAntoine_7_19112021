@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Field from './Field';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { validEmail, validPassword, validName } from '../../services/validateFields';
-import '../../styles/signupform.css'
+import '../../styles/signupform.css';
+import axios from 'axios';
 
 const SignUpForm = () => {
     const [name, setName] = useState('')
@@ -16,7 +17,7 @@ const SignUpForm = () => {
     const [emailErr, setEmailErr] = useState(false)
     const [pwdErr, setPwdErr] = useState(false)
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     
     useEffect(() => {
 
@@ -27,12 +28,31 @@ const SignUpForm = () => {
         setCtrlPwdErr(password !== ctrlPwd && ctrlPwd.length > 5)
     }, [name, prenom, email, password, ctrlPwd])
 
-    const validate = (e) => {
+    const validate = async (e) => {
         e.preventDefault()
         if (name === '' || prenom === '' || email === '' || password === ''  || validName(name) || validName(prenom) || validEmail(email) || validPassword(password)){
             e.preventDefault()
         } else {
-            navigate('/home')
+            await axios({
+                method: "post",
+                url: 'http://localhost:5000/api/user/signup',
+                data: {
+                    name,
+                    firstname: prenom,
+                    email,
+                    password
+                }
+            })
+            .then((res) => {
+                console.log(res);
+                if(res.data.errors) {
+                    setNameErr(true)
+                    setPrenomErr(true)
+                    setEmailErr(true)
+                    setPwdErr(true)
+                }
+            })
+            .catch((err) => console.log(err))
         }
     }
 
