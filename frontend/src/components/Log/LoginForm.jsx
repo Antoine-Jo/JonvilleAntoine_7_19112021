@@ -24,11 +24,13 @@ const LoginForm = () => {
         } else {
             await axios({
                 method: 'POST',
+                mode: 'cors',
                 url: 'http://localhost:5000/api/user/login',
                 data: {
                     email,
                     password
-                }
+                },
+                withCredentials: 'true'
             })
             .then((res) => {
                 console.log(res);
