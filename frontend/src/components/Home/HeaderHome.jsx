@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HeaderHome = () => {
-
     
     const logout = async (e) => {
         await axios({
