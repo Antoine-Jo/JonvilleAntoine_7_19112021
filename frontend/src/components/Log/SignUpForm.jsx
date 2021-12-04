@@ -35,13 +35,15 @@ const SignUpForm = () => {
         } else {
             await axios({
                 method: "post",
+                mode: 'cors',
                 url: 'http://localhost:5000/api/user/signup',
                 data: {
                     name,
                     firstname: prenom,
                     email,
                     password
-                }
+                },
+                withCredentials: 'true'
             })
             .then((res) => {
                 console.log(res);
