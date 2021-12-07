@@ -21,6 +21,10 @@ const Home = () => {
             })
             .then((res) => {
                 console.log(res);
+                // console.log(err);
+            })
+            .catch((err) => {
+                console.error(err);
             })
         }
         fetch()

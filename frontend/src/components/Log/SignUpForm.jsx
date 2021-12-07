@@ -17,8 +17,6 @@ const SignUpForm = () => {
     const [emailErr, setEmailErr] = useState(false)
     const [pwdErr, setPwdErr] = useState(false)
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
-    const [vldRegister, setVldRegister] = useState('')
-    const [registerErr, setRegisterErr] = useState('')
     // const navigate = useNavigate()
     
     useEffect(() => {
@@ -32,8 +30,14 @@ const SignUpForm = () => {
 
     const validate = async (e) => {
         e.preventDefault()
-        if (name === '' || prenom === '' || email === '' || password === ''  || validName(name) || validName(prenom) || validEmail(email) || validPassword(password)){
-            e.preventDefault()
+        const validity = document.querySelector('.validate_register');
+        const errors = document.querySelector('.err_register');
+
+        if (name === '' || prenom === '' || email === '' || password === ''  || validName(name) || validName(prenom) || validEmail(email) || validPassword(password) || (password !== ctrlPwd && ctrlPwd.length > 5)){
+            // e.preventDefault()
+            validity.innerHTML = ''
+            errors.innerHTML = ''
+            errors.innerHTML = 'Veuillez remplir les champs correctement pour vous enregistré !'
         } else {
             await axios({
                 method: "post",
@@ -48,14 +52,14 @@ const SignUpForm = () => {
                 withCredentials: 'true'
             })
             .then((res) => {
-                console.log(res.data);
-                setRegisterErr('')
-                setVldRegister(res.data)
+                console.log(res.data.message);
+                validity.innerHTML = res.data.message
+                errors.innerHTML = ''
             })
             .catch((err) => {
-                // console.error(err);
-                // console.log(err.response.data.err)
-                setRegisterErr(err.response.data.err)
+                console.log(err.response.data.err)
+                errors.innerHTML = err.response.data.err
+                validity.innerHTML = ''
             }
             )
         }
@@ -74,8 +78,8 @@ const SignUpForm = () => {
             <Field type='password' name='ctrl-password' value={ctrlPwd} onChange={(e) => setCtrlPwd(e.target.value)}>Confirmer mot de passe</Field>
             {ctrlPwdErr && <p className='confirm-password error'>Le mot de passe ne correspond pas.</p>}
             <Button type='submit'>S'inscrire</Button>
-            {<p className='validate_register'>{vldRegister}</p>}
-            {<p className='err_register'>{registerErr}</p>}
+            <p className='validate_register'></p>
+            <p className='err_register'></p>
         </form>
     );
 };
