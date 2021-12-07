@@ -7,6 +7,8 @@ const HeaderHome = () => {
     const logout = async (e) => {
         await axios({
             method: 'GET',
+            mode: 'cors',
+            withCredentials: 'true',
             url: 'http://localhost:5000/api/user/logout',
         })
     }
