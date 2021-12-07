@@ -36,6 +36,10 @@ const LoginForm = () => {
                 console.log(res);
                 navigate('/home')
             })
+            .catch((err) => {
+                console.error(err)
+                console.log(err.response.data.err)
+            })
         }
     }
 

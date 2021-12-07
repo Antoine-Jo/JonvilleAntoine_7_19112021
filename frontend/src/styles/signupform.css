@@ -43,3 +43,15 @@ button:hover {
     color: red;
     margin-bottom: 10px;
 }
+
+.err_register {
+    color: red;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.validate_register {
+    color: green;
+    margin-top: 20px;
+    font-weight: bold;
+}

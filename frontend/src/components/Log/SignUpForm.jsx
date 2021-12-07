@@ -17,6 +17,8 @@ const SignUpForm = () => {
     const [emailErr, setEmailErr] = useState(false)
     const [pwdErr, setPwdErr] = useState(false)
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
+    const [vldRegister, setVldRegister] = useState('')
+    const [registerErr, setRegisterErr] = useState('')
     // const navigate = useNavigate()
     
     useEffect(() => {
@@ -46,20 +48,14 @@ const SignUpForm = () => {
                 withCredentials: 'true'
             })
             .then((res) => {
-                console.log(res);
-                // if(res.data.errors) {
-                //     setNameErr(true)
-                //     setPrenomErr(true)
-                //     setEmailErr(true)
-                //     setPwdErr(true)
-                // }
+                console.log(res.data);
+                setRegisterErr('')
+                setVldRegister(res.data)
             })
             .catch((err) => {
-                console.error(err);
-                for ( const [key, value] of Object.entries(err)){
-                    console.warn(key, value)
-                };
-                console.log(err.response.data.err)
+                // console.error(err);
+                // console.log(err.response.data.err)
+                setRegisterErr(err.response.data.err)
             }
             )
         }
@@ -75,9 +71,11 @@ const SignUpForm = () => {
             {emailErr && <p className="email error">Votre email n'est pas correct</p>}
             <Field type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}>Mot de passe</Field>
             {pwdErr && <p className="password error">Le mot de passe doit contenir 8 caractères, une lettre, un chiffre.</p>}
-            <Field type='password' name='password' value={ctrlPwd} onChange={(e) => setCtrlPwd(e.target.value)}>Confirmer mot de passe</Field>
+            <Field type='password' name='ctrl-password' value={ctrlPwd} onChange={(e) => setCtrlPwd(e.target.value)}>Confirmer mot de passe</Field>
             {ctrlPwdErr && <p className='confirm-password error'>Le mot de passe ne correspond pas.</p>}
             <Button type='submit'>S'inscrire</Button>
+            {<p className='validate_register'>{vldRegister}</p>}
+            {<p className='err_register'>{registerErr}</p>}
         </form>
     );
 };
