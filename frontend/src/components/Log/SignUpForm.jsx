@@ -47,14 +47,21 @@ const SignUpForm = () => {
             })
             .then((res) => {
                 console.log(res);
-                if(res.data.errors) {
-                    setNameErr(true)
-                    setPrenomErr(true)
-                    setEmailErr(true)
-                    setPwdErr(true)
-                }
+                // if(res.data.errors) {
+                //     setNameErr(true)
+                //     setPrenomErr(true)
+                //     setEmailErr(true)
+                //     setPwdErr(true)
+                // }
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                console.error(err);
+                for ( const [key, value] of Object.entries(err)){
+                    console.warn(key, value)
+                };
+                console.log(err.response.data.err)
+            }
+            )
         }
     }
 
