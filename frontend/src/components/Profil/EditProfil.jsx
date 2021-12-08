@@ -14,7 +14,7 @@ const EditProfil = () => {
     return (
         <div className='profil_container'>
             <div className='profil_header'>
-                <i class="fas fa-arrow-circle-left profil_closed" onClick={handleClick}></i>
+                <i className="fas fa-arrow-circle-left profil_closed" onClick={handleClick}></i>
                 <h2 className='profil_title'>Votre profil</h2>
                 {/* <i className="fas fa-times profil_closed" onClick={handleClick}></i> */}
             </div>

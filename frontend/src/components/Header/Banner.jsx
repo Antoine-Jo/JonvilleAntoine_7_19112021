@@ -6,7 +6,7 @@ const Banner = () => {
     return (
         <header className='header'>
             <img src={Logo} alt="Logo Groupomania" className='header_logo' />
-            <h1 className="header_title">Bienvenue sur le réseau social d'entreprise</h1>
+            <h1 className="header_title">Réseau social d'entreprise</h1>
         </header>
     );
 };

@@ -11,7 +11,7 @@ const index = () => {
             <Routes>
                 <Route path="/" element={<Subscription />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/profil/:userid" element={<Profil />} />
+                <Route path='/profil/:id' element={<Profil />} />
                 <Route path='/*' element={<NotFound/>} />
             </Routes>
         </BrowserRouter>

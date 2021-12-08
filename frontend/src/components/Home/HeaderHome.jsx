@@ -25,7 +25,7 @@ const HeaderHome = () => {
             {uid ? (
                 <>
                 <h3 className='title_header'>Bienvenue {userData.firstname}</h3>
-                <Link to='/profil/{user.id}' className='link_header'><i className="far fa-id-card profil"></i></Link>
+                <Link to='/profil/:id' className='link_header'><i className="far fa-id-card profil"></i></Link>
                 <i className="fas fa-sign-out-alt signout" onClick={logout}></i>
                 </>
             ): (

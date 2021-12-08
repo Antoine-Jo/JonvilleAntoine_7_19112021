@@ -8,6 +8,7 @@ const Profil = () => {
     return (
         <div>
             <Banner/>
+            <h1>Coucouuuuu</h1>
             <EditProfil/>
         </div>
     );
