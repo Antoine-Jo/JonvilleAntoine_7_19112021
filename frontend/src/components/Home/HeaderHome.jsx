@@ -3,9 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 
 const HeaderHome = () => {
-    const uid = useContext(UidContext)
+    const uid = useContext(UidContext);
+    const userData = useSelector((state) => state.userReducer);
     
     const logout = async (e) => {
         await axios({
@@ -22,7 +24,7 @@ const HeaderHome = () => {
         <div className='header_container'>
             {uid ? (
                 <>
-                <h3 className='title_header'>User Name</h3>
+                <h3 className='title_header'>Bienvenue {userData.firstname}</h3>
                 <Link to='/profil/{user.id}' className='link_header'><i className="far fa-id-card profil"></i></Link>
                 <i className="fas fa-sign-out-alt signout" onClick={logout}></i>
                 </>
