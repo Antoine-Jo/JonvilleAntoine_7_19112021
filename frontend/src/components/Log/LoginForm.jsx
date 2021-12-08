@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import Field from './Field';
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate();
 
 
     const handleLogin = async (e) => {
@@ -29,7 +27,7 @@ const LoginForm = () => {
             })
             .then((res) => {
                 console.log(res);
-                navigate('/home');
+                window.location = '/home';
             })
             .catch((err) => {
                 errors.innerHTML = err.response.data.err;

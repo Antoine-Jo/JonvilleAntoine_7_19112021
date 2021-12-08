@@ -7,10 +7,7 @@ import axios from 'axios';
 
 const Home = () => {
    
-    // useEffect(() => {
-    //     setEmailErr(validEmail(email))
-    //     setPwdErr(validPassword(password))
-    // }, [email, password])
+    
     useEffect(() => {
         const fetch = async () => {
             await axios({
