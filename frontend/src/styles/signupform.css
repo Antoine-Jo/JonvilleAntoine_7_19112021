@@ -17,11 +17,7 @@
     font-weight: bold;
 }
 
-p {
-    margin: 0;
-}
-
-button {
+.btn_form {
     width: 10em;
     height: 3em;
     font-size: 1.1em;
@@ -34,7 +30,7 @@ button {
     text-align: center;
 }
 
-button:hover {
+.btn_form:hover {
     filter: brightness(130%);
     transform: scale(1.1);
 }
@@ -44,16 +40,19 @@ button:hover {
     margin-bottom: 20px;
     font-weight: bold;
     font-size: 1.2em;
+    margin: 20px 0;
 }
 
 .err_register {
     color: red;
     margin-top: 20px;
     font-weight: bold;
+    margin: 20px 0;
 }
 
 .validate_register {
     color: green;
     margin-top: 20px;
     font-weight: bold;
+    margin: 0;
 }

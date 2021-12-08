@@ -3,7 +3,7 @@ import React from 'react';
 const Button = ({children, type }) => {
     return (
         <div>
-            <button type={type}>{children}</button>
+            <button className="btn_form" type={type}>{children}</button>
         </div>
     );
 };

@@ -6,7 +6,7 @@ import Posts from '../components/Home/Posts';
 import axios from 'axios';
 
 const Home = () => {
-
+   
     // useEffect(() => {
     //     setEmailErr(validEmail(email))
     //     setPwdErr(validPassword(password))
@@ -21,7 +21,6 @@ const Home = () => {
             })
             .then((res) => {
                 console.log(res);
-                // console.log(err);
             })
             .catch((err) => {
                 console.error(err);
