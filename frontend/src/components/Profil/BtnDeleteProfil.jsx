@@ -7,6 +7,7 @@ const BtnDeleteProfil = () => {
 
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
+    const deleteText = document.querySelector('.delete_validity')
 
     const handleDelete = (e) => {
         e.preventDefault();
@@ -17,7 +18,7 @@ const BtnDeleteProfil = () => {
 
     return (
         <>
-           <button className='btn_delete' onClick={handleDelete}>Supprimer le profil</button> 
+           <button className='btn_delete' onClick={handleDelete}>Supprimer le profil</button>
         </>
     );
 };
