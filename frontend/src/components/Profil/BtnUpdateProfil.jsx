@@ -17,7 +17,7 @@ const BtnUpdateProfil = () => {
     return (
         <>
         <button className='update_btn' onClick={showModal}>Modifier le profil</button>
-        <UpdateModal showModal={openModal}/>
+        <UpdateModal showModal={openModal} hideModal={hideModal}/>
         </>
     );
 };
