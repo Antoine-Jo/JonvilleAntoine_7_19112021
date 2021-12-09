@@ -3,6 +3,7 @@ import avatar from '../../images/AvatarP7.png';
 import { useSelector } from 'react-redux';
 import { UidContext } from '../AppContext';
 import BtnUpdateProfil from './BtnUpdateProfil';
+import BtnDeleteProfil from './BtnDeleteProfil';
 
 const FieldProfil = () => {
     const userData = useSelector((state) => state.userReducer);
@@ -17,7 +18,7 @@ const FieldProfil = () => {
             {uid ? (
                 <>
                 <BtnUpdateProfil/>
-                <button className='delete_btn'>Supprimer le compte</button>
+                <BtnDeleteProfil/>
                 </>
             ): (
                 <span></span>

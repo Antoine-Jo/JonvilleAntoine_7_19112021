@@ -112,3 +112,18 @@
     transform: scale(1.1);
 }
 
+.btn_delete {
+    margin-top: 20px;
+    width: 25%;
+    height: 2.5em;
+    border-radius: 20px;
+    border: 1px solid #bb0b0b;
+    background-color: #bb0b0b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn_delete:hover {
+    filter: brightness(130%);
+    transform: scale(1.1);
+}

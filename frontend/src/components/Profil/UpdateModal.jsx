@@ -8,22 +8,21 @@ const UpdateModal = ({showModal, hideModal}) => {
     const uid = useContext(UidContext)
     const userData = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
-    // const userData = useSelector((state) => state.userReducer);
 
-    const initialState = {
-        name: '',
-        firstname: '',
-        email: '',
-    }
-    const [newData, setNewData] = useState(initialState);
-
-    const handleSubmit = async (e) => {
+    const [name, setName] = useState(userData.name);
+    const [firstname, setFirstname] = useState(userData.firstname);
+    const [email, setEmail] = useState(userData.email);
+    
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(newData);
-        if (initialState === '') e.preventDefault();
-        await dispatch(updateUser(newData, uid))
+        // console.log(newData);
+        const data = {
+            name: name,
+            firstname: firstname,
+            email: email
+        }
+        dispatch(updateUser(data, uid))
             .then(() => {
-                // window.location = '/profil/:id'
                 dispatch(getUser(uid))
                 hideModal()
             })
@@ -37,11 +36,11 @@ const UpdateModal = ({showModal, hideModal}) => {
         showModal && (
         <form className='modal_container' onSubmit={handleSubmit}>
             <label htmlFor='name'>Nom</label>
-            <input type='text' value={newData.name} id='name' onChange={e => setNewData({...newData, name: e.target.value})} minLength="2"/>
+            <input type='text' value={name} id='name' onChange={e => setName(e.target.value)} minLength="2"/>
             <label htmlFor='firstname'>Prénom</label>
-            <input type='text' value={newData.firstname} id='firstname' onChange={e => setNewData({...newData, firstname: e.target.value})} minLength="2"/>
+            <input type='text' value={firstname} id='firstname' onChange={e => setFirstname(e.target.value)} minLength="2"/>
             <label htmlFor='email'>Email</label>
-            <input type='email' value={newData.email} id='email' onChange={e => setNewData({...newData, email: e.target.value})}/>
+            <input type='email' value={email} id='email' onChange={e => setEmail(e.target.value)}/>
             <button type='submit'>Soumettre les modifications</button>
             <button onClick={hideModal} type='button'>Retour</button>
         </form>
