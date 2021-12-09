@@ -1,10 +1,14 @@
-import axios from 'axios';
 import React, { useContext, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../actions/user_actions';
 import { UidContext } from '../AppContext';
 
-const UpdateModal = ({showModal, hideModal}) => {
+const UpdateModal = ({showModal}) => {
 
     const uid = useContext(UidContext)
+    const userData = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
+    // const userData = useSelector((state) => state.userReducer);
 
     const initialState = {
         name: '',
@@ -16,23 +20,15 @@ const UpdateModal = ({showModal, hideModal}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(newData);
-
-        await axios({
-            method: 'PUT',
-            mode: 'cors',
-            url: `http://localhost:5000/api/user/${uid}`,
-            data: newData,
-            withCredentials: 'true',
-        })
-        .then((res) => {
-            console.log(res);
-            hideModal();
-            window.location ='/profil/:id'
-        })
-        .catch((err) => {
-            console.log(err.response.data.err)
-        })
+        await dispatch(updateUser(newData, uid))
+            .then(() => {
+                window.location = '/profil/:id'
+            })
+            .catch((err) => console.log(err))
     }
+            
+            
+
 
     return (
         showModal && (
