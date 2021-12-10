@@ -7,7 +7,6 @@ const BtnDeleteProfil = () => {
 
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
-    const deleteText = document.querySelector('.delete_validity')
 
     const handleDelete = (e) => {
         e.preventDefault();

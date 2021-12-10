@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 const HeaderHome = () => {
     const uid = useContext(UidContext);
     const userData = useSelector((state) => state.userReducer);
-    
+
     const logout = async (e) => {
         await axios({
             method: 'GET',
@@ -25,7 +25,7 @@ const HeaderHome = () => {
             {uid ? (
                 <>
                 <h3 className='title_header'>Bienvenue {userData.firstname}</h3>
-                <Link to='/profil/:id' className='link_header'><i className="far fa-id-card profil"></i></Link>
+                <Link to={"/profil/" + userData.id} className='link_header'><i className="far fa-id-card profil" ></i></Link>
                 <i className="fas fa-sign-out-alt signout" onClick={logout}></i>
                 </>
             ): (

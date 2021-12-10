@@ -15,7 +15,7 @@ const FieldProfil = () => {
             <h3 className='field_title'>{userData.name}</h3>
             <h3 className='field_title'>{userData.firstname}</h3>
             <p className='field_mail'>{userData.email}</p>
-            {uid ? (
+            {uid === userData.id ? (
                 <>
                 <BtnUpdateProfil/>
                 <BtnDeleteProfil/>
