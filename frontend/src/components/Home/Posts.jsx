@@ -8,7 +8,8 @@ const Posts = () => {
     const [loadPost, setLoadPost] = useState(true)
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer)
-    console.log(posts);
+
+    
     useEffect(() => {
         if (loadPost) {
             dispatch(getPosts())

@@ -11,18 +11,11 @@
     text-align: center;
 }
 
-.signout {
+.signout, .profil {
     font-weight: bold;
     font-size: 3em;
     color: #1DA1F2;
     cursor: pointer;
-}
-
-.link_header, .link_header:active, .link_header:visited {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 3em;
-    color: #1DA1F2;
 }
 
 .post_container {

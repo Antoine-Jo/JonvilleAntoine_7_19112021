@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import { useContext } from 'react';
@@ -20,6 +20,10 @@ const HeaderHome = () => {
         dispatch(getUser(uid))
         navigate(`/profil/me`)
     }
+
+    useEffect(() => {
+        dispatch(getUser(uid))
+    })
 
     return (
         <div className='header_container'>

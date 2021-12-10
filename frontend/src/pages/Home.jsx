@@ -5,6 +5,7 @@ import HeaderHome from '../components/Home/HeaderHome';
 import Posts from '../components/Home/Posts';
 import { UidContext } from '../components/AppContext';
 import Subscription from './Subscription';
+import AddPost from '../components/Home/Post/AddPost';
 
 const Home = () => {
    const uid = useContext(UidContext)
@@ -15,6 +16,7 @@ const Home = () => {
             <>
                 <Banner/>
                 <HeaderHome/>
+                <AddPost/>
                 <Posts/>
             </>
             ) : (
