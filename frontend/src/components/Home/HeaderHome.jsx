@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import { useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../actions/user_actions';
 
 const HeaderHome = () => {
     const uid = useContext(UidContext);
     const userData = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const logout = async (e) => {
         await axios({
@@ -20,12 +23,17 @@ const HeaderHome = () => {
         // .catch((err) => console.log(err))
     }
 
+    const viewProfil = () => {
+        dispatch(getUser(uid))
+        navigate(`/profil/${uid}`)
+    }
+
     return (
         <div className='header_container'>
             {uid ? (
                 <>
                 <h3 className='title_header'>Bienvenue {userData.firstname}</h3>
-                <Link to={"/profil/" + userData.id} className='link_header'><i className="far fa-id-card profil" ></i></Link>
+                <i className="far fa-id-card profil" onClick={viewProfil}></i>
                 <i className="fas fa-sign-out-alt signout" onClick={logout}></i>
                 </>
             ): (

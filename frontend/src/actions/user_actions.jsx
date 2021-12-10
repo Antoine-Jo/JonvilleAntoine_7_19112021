@@ -4,11 +4,11 @@ export const GET_USER = "GET_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const DELETE_USER = "DELETE_USER";
 
-export const getUser = (uid) => {
+export const getUser = (id) => {
     return (dispatch) => {
         return axios ({
             method: 'GET',
-            url : `http://localhost:5000/api/user/${uid}`,
+            url : `http://localhost:5000/api/user/${id}`,
             withCredentials: true
         })
             .then((res) => {
