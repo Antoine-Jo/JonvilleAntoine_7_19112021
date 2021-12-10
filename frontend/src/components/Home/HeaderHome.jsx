@@ -1,10 +1,9 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../actions/user_actions';
+import { getUser, logOut } from '../../actions/user_actions';
 
 const HeaderHome = () => {
     const uid = useContext(UidContext);
@@ -13,19 +12,13 @@ const HeaderHome = () => {
     const navigate = useNavigate();
 
     const logout = async (e) => {
-        await axios({
-            method: 'GET',
-            mode: 'cors',
-            withCredentials: 'true',
-            url: 'http://localhost:5000/api/user/logout',
-        })
-        .then(() => window.location = '/')
-        // .catch((err) => console.log(err))
+        dispatch(logOut())
+        navigate('/')
     }
 
     const viewProfil = () => {
         dispatch(getUser(uid))
-        navigate(`/profil/${uid}`)
+        navigate(`/profil/me`)
     }
 
     return (

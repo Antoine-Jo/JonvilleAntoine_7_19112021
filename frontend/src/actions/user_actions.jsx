@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const DELETE_USER = "DELETE_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 export const getUser = (id) => {
     return (dispatch) => {
@@ -44,6 +45,21 @@ export const deleteUser = (uid) => {
         })
         .then((res) => {
             dispatch({ type: DELETE_USER, payload: res.data})
+        })
+        .catch((err) => console.log(err))
+    }
+}
+
+export const logOut = () => {
+    return (dispatch) => {
+        return axios ({
+            method: 'GET',
+            mode: 'cors',
+            withCredentials: 'true',
+            url: 'http://localhost:5000/api/user/logout',
+        })
+        .then((res) => {
+            dispatch({ type: LOGOUT_USER, payload: res.data})
         })
         .catch((err) => console.log(err))
     }

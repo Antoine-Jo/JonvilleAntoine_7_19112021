@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { UidContext } from '../components/AppContext';
 import Banner from '../components/Header/Banner';
-import EditProfil from '../components/Profil/EditProfil';
+import EditProfil from '../components/MyProfil/EditProfil';
 import Subscription from './Subscription';
 
 

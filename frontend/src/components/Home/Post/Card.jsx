@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/user_actions';
 import logo from '../../../images/AvatarP7.png'
+import { UidContext } from '../../AppContext';
 
 const Card = ({ post }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const uid = useContext(UidContext)
 
     const [isLoading, setIsLoading] = useState(true);
 
     const handleProfil = () => {
         dispatch(getUser(post.id))
-        navigate(`/profil/${post.id}`)
+        if (post.id === uid) {
+            navigate('/profil/me')
+        } else {
+            navigate(`/profil/${post.id}`)
+        }
     }
 
     return (
