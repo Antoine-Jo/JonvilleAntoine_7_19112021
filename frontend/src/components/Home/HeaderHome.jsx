@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, logOut } from '../../actions/user_actions';
+import { logOut } from '../../actions/user_actions';
 
 const HeaderHome = () => {
     const uid = useContext(UidContext);
@@ -17,13 +17,8 @@ const HeaderHome = () => {
     }
 
     const viewProfil = () => {
-        dispatch(getUser(uid))
         navigate(`/profil/me`)
     }
-
-    useEffect(() => {
-        dispatch(getUser(uid))
-    })
 
     return (
         <div className='header_container'>

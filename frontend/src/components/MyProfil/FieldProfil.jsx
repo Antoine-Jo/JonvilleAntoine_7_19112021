@@ -11,7 +11,7 @@ const FieldProfil = () => {
 
     return (
         <div className='field_profil'>
-            {uid === userData.id ? (
+            {uid ? (
                 <>
             <img src={avatar} className="field_avatar" alt="Avatar de l'utilisateur" />
             <h3 className='field_title'>{userData.name}</h3>
@@ -21,13 +21,7 @@ const FieldProfil = () => {
                 <BtnDeleteProfil/>
                 </>
             ): (
-                <>
-                <img src={avatar} className="field_avatar" alt="Avatar de l'utilisateur" />
-            <h3 className='field_title'>{userData.name}</h3>
-            <h3 className='field_title'>{userData.firstname}</h3>
-            <p className='field_mail'>{userData.email}</p>
                 <span></span>
-                </>
             )}
         </div>
     );

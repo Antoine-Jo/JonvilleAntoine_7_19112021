@@ -15,7 +15,7 @@ const UpdateModal = ({showModal, hideModal}) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(newData);
+        
         const data = {
             name: name,
             firstname: firstname,

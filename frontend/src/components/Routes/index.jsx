@@ -13,7 +13,6 @@ const index = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path='/profil/'>
                     <Route path='me' element={<Profil />}/>
-                    <Route path=':id' element={<Profil/>}/>
                 </Route>
                 <Route path='/*' element={<NotFound/>} />
             </Routes>
