@@ -4,6 +4,11 @@ import logo from '../../../images/AvatarP7.png'
 const Card = ({ post }) => {
 
     const [isLoading, setIsLoading] = useState(true);
+    const [modalComment, setModalComment] = useState(false);
+
+    const showComments = () => {
+        setModalComment(true)
+    }
 
 
     return (
@@ -15,7 +20,9 @@ const Card = ({ post }) => {
             </div>
             <p className='post_text'>{post.text}</p>
             <footer className='post_footer'>
-                <i className="fas fa-comments icon_comment"></i>
+                <i className="fas fa-comments icon_comment" onClick={showComments}>
+                    {modalComment && <h3>Hello World !</h3>}
+                </i>
                 <i className="far fa-thumbs-up icon_like"></i>
             </footer>
         </article>

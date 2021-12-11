@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Field from './Field';
-// import { useNavigate } from 'react-router';
 import { validEmail, validPassword, validName } from '../../services/validateFields';
 import '../../styles/signupform.css';
 import axios from 'axios';
@@ -17,7 +16,6 @@ const SignUpForm = () => {
     const [emailErr, setEmailErr] = useState(false)
     const [pwdErr, setPwdErr] = useState(false)
     const [ctrlPwdErr, setCtrlPwdErr] = useState(false)
-    // const navigate = useNavigate()
     
     useEffect(() => {
 
