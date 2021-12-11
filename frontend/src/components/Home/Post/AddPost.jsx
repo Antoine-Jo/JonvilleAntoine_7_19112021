@@ -11,7 +11,6 @@ const AddPost = () => {
     const [message, setMessage] = useState('');
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
-    // console.log(uid);
 
     const handlePost = async () => {
         await axios ({
@@ -26,22 +25,18 @@ const AddPost = () => {
         })
         .then((res) => {
             dispatch(getPosts());
-            cancelPost();
+            setMessage('')
         })
         .catch((err) => {
             console.log(err.response.data.err);
         })
     }
 
-    const cancelPost = () => {
-        setMessage('');
-    }
-
     return (
         <div className='add_container'>
             <textarea name='message' id='message' placeholder='Poster votre message' value={message} onChange={(e) => setMessage(e.target.value)}/>
             <button className='send' onClick={handlePost}>Envoyer</button>
-            <button className='cancel' onClick={cancelPost}>Annuler</button>
+            <button className='cancel' onClick={() => setMessage('')}>Annuler</button>
         </div>
     );
 };
