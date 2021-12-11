@@ -47,7 +47,7 @@ const Card = ({ post }) => {
                 </div>
             )}
             <footer className='post_footer'>
-                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(true)}>
+                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}>
                     {modalComment && <h3>Hello World !</h3>}
                 </i>
                 <i className="far fa-thumbs-up icon_like"></i>
