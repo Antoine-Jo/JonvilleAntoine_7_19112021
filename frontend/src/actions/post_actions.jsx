@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Posts
 export const GET_POSTS = "GET_POSTS";
-export const UPDATE_POST = "UPDATE_POST"
+export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
 
 export const getPosts = () => {
     return (dispatch) => {
@@ -18,7 +19,7 @@ export const getPosts = () => {
     }
 }
 
-export const updatePost = (text, idposts, userid) => {
+export const updatePost = (text, idposts) => {
     return (dispatch) => {
         return axios ({
             method: 'PUT',
@@ -26,13 +27,27 @@ export const updatePost = (text, idposts, userid) => {
             url: `http://localhost:5000/api/post/${idposts}`,
             data: {
                 text,
-                userid
             },
             withCredentials: 'true'
         })
         .then((res) => {
-            dispatch({ type: UPDATE_POST, payload: {text, idposts, userid}})
+            dispatch({ type: UPDATE_POST, payload: {text: text} })
         })
         .catch((err) => console.log(err.response.data.err))
+    }
+}
+
+export const deletePost = (idposts) => {
+    return (dispatch) => {
+        return axios ({
+            method: 'DELETE',
+            mode: 'cors',
+            url: `http://localhost:5000/api/post/${idposts}`,
+            withCredentials: 'true'
+        })
+        .then((res) => {
+            dispatch({ type: DELETE_POST, payload: {idposts: idposts} })
+        })
+        .catch((err) => console.log(err))
     }
 }

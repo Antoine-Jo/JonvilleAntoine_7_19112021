@@ -4,6 +4,7 @@ import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
 import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
+import DeleteCard from './DeleteCard';
 
 const Card = ({ post }) => {
 
@@ -12,14 +13,16 @@ const Card = ({ post }) => {
     const [modalComment, setModalComment] = useState(false);
     
     const [updateModal, setUpdateModal] = useState(false);
-    const [editMessage, setEditMessage] = useState(post.text)
+    const [editMessage, setEditMessage] = useState(null)
 
-    const updateText = async () => {
-        
-        await dispatch(updatePost(editMessage, post.idposts, uid))
-        .then(() => {
-            dispatch(getPosts());
-        })
+    const updateText = () => {
+        if (editMessage) {
+            dispatch(updatePost(editMessage, post.idposts))
+            .then(() => {
+                dispatch(getPosts());
+            })
+        }
+        setUpdateModal(false);
     }
 
 
@@ -29,12 +32,17 @@ const Card = ({ post }) => {
             <div className='post_header'>
                 <h3>{post.name} {post.firstname}</h3>
                 <p>{dateParser(post.createdate)}</p>
-                {post.id === uid && <i className="fas fa-edit" onClick={() => setUpdateModal(true)}></i>}
+                {post.id === uid && (
+                    <>
+                        <i className="fas fa-edit" onClick={() => setUpdateModal(!updateModal)}></i>
+                        <DeleteCard id={post.idposts} />
+                    </>
+                )}
             </div>
             {updateModal === false && <p className='post_text'>{post.text}</p>}
             {updateModal && (
                 <div className='post_text'>
-                <textarea defaultValue={editMessage} onChange={e => setEditMessage(e.target.value)}/>
+                <textarea defaultValue={post.text} onChange={e => setEditMessage(e.target.value)}/>
                 <button onClick={updateText}>Envoyer les modifications</button>
                 </div>
             )}
