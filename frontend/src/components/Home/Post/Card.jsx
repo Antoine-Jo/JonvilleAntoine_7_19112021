@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
 import { UidContext } from '../../AppContext';
+import { dateParser } from '../../../services/DateForm';
 
 const Card = ({ post }) => {
 
-    // const [isLoading, setIsLoading] = useState(true);
     const [modalComment, setModalComment] = useState(false);
     const [updateModal, setUpdateModal] = useState(false);
     const uid = useContext(UidContext);
@@ -22,15 +22,11 @@ const Card = ({ post }) => {
         setUpdateModal(true);
     }
 
-    const update = () => {
-        // e.preventDefault();
-
+    const update = async () => {
         
-        // console.log(data, uid);
-        dispatch(updatePost(editMessage, post.idposts, uid))
+        await dispatch(updatePost(editMessage, post.idposts, uid))
         .then(() => {
             dispatch(getPosts());
-
         })
     }
 
@@ -40,7 +36,7 @@ const Card = ({ post }) => {
             <img src={logo} alt='avatar author' className='logo_user'/>
             <div className='post_header'>
                 <h3>{post.name} {post.firstname}</h3>
-                <p>{post.createdate}</p>
+                <p>{dateParser(post.createdate)}</p>
                 {post.id === uid && <i className="fas fa-edit" onClick={showEdit}>
                         {updateModal && 
                         <>
