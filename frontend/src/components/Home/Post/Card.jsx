@@ -41,9 +41,9 @@ const Card = ({ post }) => {
             </div>
             {updateModal === false && <p className='post_text'>{post.text}</p>}
             {updateModal && (
-                <div className='post_text'>
-                <textarea defaultValue={post.text} onChange={e => setEditMessage(e.target.value)}/>
-                <button onClick={updateText}>Envoyer les modifications</button>
+                <div className='edit_container'>
+                <textarea defaultValue={post.text} onChange={e => setEditMessage(e.target.value)} className='edit_text'/>
+                <button onClick={updateText} className='edit_btn'>Envoyer les modifications</button>
                 </div>
             )}
             <footer className='post_footer'>
