@@ -7,22 +7,14 @@ import { dateParser } from '../../../services/DateForm';
 
 const Card = ({ post }) => {
 
-    const [modalComment, setModalComment] = useState(false);
-    const [updateModal, setUpdateModal] = useState(false);
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
-
+    const [modalComment, setModalComment] = useState(false);
+    
+    const [updateModal, setUpdateModal] = useState(false);
     const [editMessage, setEditMessage] = useState(post.text)
 
-    const showComments = () => {
-        setModalComment(true)
-    }
-
-    const showEdit = () => {
-        setUpdateModal(true);
-    }
-
-    const update = async () => {
+    const updateText = async () => {
         
         await dispatch(updatePost(editMessage, post.idposts, uid))
         .then(() => {
@@ -37,19 +29,17 @@ const Card = ({ post }) => {
             <div className='post_header'>
                 <h3>{post.name} {post.firstname}</h3>
                 <p>{dateParser(post.createdate)}</p>
-                {post.id === uid && <i className="fas fa-edit" onClick={showEdit}>
-                        {updateModal && 
-                        <>
-                            <textarea name='message' id='message' placeholder={editMessage} value={editMessage} onChange={e => setEditMessage(e.target.value)}/>
-                            <button onClick={update}>Envoyer</button>
-                            <button>Annuler</button>
-                        </>    
-                        }
-                    </i>}
+                {post.id === uid && <i className="fas fa-edit" onClick={() => setUpdateModal(true)}></i>}
             </div>
-            <p className='post_text'>{post.text}</p>
+            {updateModal === false && <p className='post_text'>{post.text}</p>}
+            {updateModal && (
+                <div className='post_text'>
+                <textarea defaultValue={editMessage} onChange={e => setEditMessage(e.target.value)}/>
+                <button onClick={updateText}>Envoyer les modifications</button>
+                </div>
+            )}
             <footer className='post_footer'>
-                <i className="fas fa-comments icon_comment" onClick={showComments}>
+                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(true)}>
                     {modalComment && <h3>Hello World !</h3>}
                 </i>
                 <i className="far fa-thumbs-up icon_like"></i>
