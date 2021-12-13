@@ -31,6 +31,10 @@ export const createPost = (text) => {
                 text
             }
         })
+        .then((res) => {
+            dispatch({ type: CREATE_POST, payload: {} })
+        })
+        .catch((err) => console.log(err))
     }
 }
 

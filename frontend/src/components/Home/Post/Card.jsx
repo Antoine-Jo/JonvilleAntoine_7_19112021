@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
 import { UidContext } from '../../AppContext';
@@ -7,7 +7,7 @@ import { dateParser } from '../../../services/DateForm';
 import DeleteCard from './DeleteCard';
 
 const Card = ({ post }) => {
-
+    const userData = useSelector((state) => state.userReducer)
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
     const [modalComment, setModalComment] = useState(false);
@@ -32,7 +32,7 @@ const Card = ({ post }) => {
             <div className='post_header'>
                 <h3>{post.name} {post.firstname}</h3>
                 <p>{dateParser(post.createdate)}</p>
-                {post.id === uid && (
+                {(post.id === uid || userData.admin === 1 ) && (
                     <>
                         <i className="fas fa-edit edit_card" onClick={() => setUpdateModal(!updateModal)}></i>
                         <DeleteCard id={post.idposts} />
