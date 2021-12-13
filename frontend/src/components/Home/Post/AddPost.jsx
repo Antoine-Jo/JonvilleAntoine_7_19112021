@@ -1,34 +1,18 @@
-import axios from 'axios';
 import React from 'react';
-import { useContext } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getPosts } from '../../../actions/post_actions';
-import { UidContext } from '../../AppContext';
+import { createPost, getPosts } from '../../../actions/post_actions';
 
 const AddPost = () => {
 
     const [message, setMessage] = useState('');
-    const uid = useContext(UidContext);
     const dispatch = useDispatch();
 
-    const handlePost = async (e) => {
-        await axios ({
-            method: 'POST',
-            mode: 'cors',
-            withCredentials: 'true',
-            url: 'http://localhost:5000/api/post',
-            data: {
-                uid,
-                text: message,
-            }
-        })
-        .then((res) => {
+    const handlePost = () => {
+        dispatch(createPost(message))
+        .then(() => {
             dispatch(getPosts());
             setMessage('')
-        })
-        .catch((err) => {
-            console.log(err.response.data.err);
         })
     }
 
