@@ -11,7 +11,7 @@ const DeleteCard = (props) => {
 
     return (
         <>
-            <i className="fas fa-trash" onClick={() => {
+            <i className="fas fa-trash delete_card" onClick={() => {
                 if (window.confirm('Voulez vous supprimer ce post ?')){ 
                     deleteP(); 
                 }

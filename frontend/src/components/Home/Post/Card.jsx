@@ -34,7 +34,7 @@ const Card = ({ post }) => {
                 <p>{dateParser(post.createdate)}</p>
                 {post.id === uid && (
                     <>
-                        <i className="fas fa-edit" onClick={() => setUpdateModal(!updateModal)}></i>
+                        <i className="fas fa-edit edit_card" onClick={() => setUpdateModal(!updateModal)}></i>
                         <DeleteCard id={post.idposts} />
                     </>
                 )}
