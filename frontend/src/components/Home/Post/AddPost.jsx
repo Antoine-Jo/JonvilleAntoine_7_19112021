@@ -12,7 +12,7 @@ const AddPost = () => {
     const uid = useContext(UidContext);
     const dispatch = useDispatch();
 
-    const handlePost = async () => {
+    const handlePost = async (e) => {
         await axios ({
             method: 'POST',
             mode: 'cors',
@@ -34,9 +34,8 @@ const AddPost = () => {
 
     return (
         <div className='add_container'>
-            <textarea name='message' id='message' placeholder='Poster votre message' value={message} onChange={(e) => setMessage(e.target.value)}/>
+            <textarea className='add_text' name='message' id='message' placeholder='Poster votre message' value={message} onChange={(e) => setMessage(e.target.value)}/>
             <button className='send' onClick={handlePost}>Envoyer</button>
-            <button className='cancel' onClick={() => setMessage('')}>Annuler</button>
         </div>
     );
 };
