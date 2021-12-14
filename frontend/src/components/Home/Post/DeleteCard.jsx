@@ -7,8 +7,6 @@ const DeleteCard = (props) => {
     const userData = useSelector((state) => state.userReducer)
     // console.log(props.id);
     const deleteP = () => {
-        
-        console.log(userData.admin, props.id);
         dispatch(deletePost(props.id, userData.admin))
     }
 
