@@ -38,7 +38,7 @@ export const createPost = (text) => {
     }
 }
 
-export const updatePost = (text, idposts) => {
+export const updatePost = (text, idposts, admin) => {
     return (dispatch) => {
         return axios ({
             method: 'PUT',
@@ -46,6 +46,7 @@ export const updatePost = (text, idposts) => {
             url: `http://localhost:5000/api/post/${idposts}`,
             data: {
                 text,
+                admin,
             },
             withCredentials: 'true'
         })

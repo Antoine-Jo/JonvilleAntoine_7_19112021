@@ -17,7 +17,7 @@ const Card = ({ post }) => {
 
     const updateText = () => {
         if (editMessage) {
-            dispatch(updatePost(editMessage, post.idposts))
+            dispatch(updatePost(editMessage, post.idposts, userData.admin))
             .then(() => {
                 dispatch(getPosts());
             })
