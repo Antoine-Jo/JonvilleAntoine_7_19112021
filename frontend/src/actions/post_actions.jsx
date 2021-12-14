@@ -57,12 +57,15 @@ export const updatePost = (text, idposts, admin) => {
     }
 }
 
-export const deletePost = (idposts) => {
+export const deletePost = (idposts, admin) => {
     return (dispatch) => {
         return axios ({
             method: 'DELETE',
             mode: 'cors',
             url: `http://localhost:5000/api/post/${idposts}`,
+            data: {
+                admin,
+            },
             withCredentials: 'true'
         })
         .then((res) => {
