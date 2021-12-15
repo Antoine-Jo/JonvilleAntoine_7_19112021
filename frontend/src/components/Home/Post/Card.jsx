@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
@@ -6,6 +6,7 @@ import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
 import DeleteCard from './DeleteCard';
 import CommentCard from './CommentCard';
+import { getComments } from '../../../actions/comment_actions';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
@@ -23,6 +24,15 @@ const Card = ({ post }) => {
             })
         }
         setUpdateModal(false);
+    }
+
+    // useEffect(() => {
+    //     dispatch(getComments(post.idposts))
+    // })
+
+    const handleComment = () => {
+        // dispatch(getComments(post.idposts));
+        setModalComment(!modalComment)
     }
 
     return (
@@ -46,10 +56,9 @@ const Card = ({ post }) => {
                 </div>
             )}
             <footer className='post_footer'>
-                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}>
-                    {modalComment && <CommentCard post={post} key={post.idposts} />} 
-                </i>
+                <i className="fas fa-comments icon_comment" onClick={handleComment}></i>
                 <i className="far fa-thumbs-up icon_like"></i>
+                {modalComment && <CommentCard post={post} key={post.idposts} />} 
             </footer>
         </article>
     );
