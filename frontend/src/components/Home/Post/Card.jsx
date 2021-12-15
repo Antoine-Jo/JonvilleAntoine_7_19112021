@@ -5,15 +5,15 @@ import logo from '../../../images/AvatarP7.png'
 import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
 import DeleteCard from './DeleteCard';
+import CommentCard from './CommentCard';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
-    const uid = useContext(UidContext);
     const dispatch = useDispatch();
+    const uid = useContext(UidContext);
     const [modalComment, setModalComment] = useState(false);
-    
     const [updateModal, setUpdateModal] = useState(false);
-    const [editMessage, setEditMessage] = useState(null)
+    const [editMessage, setEditMessage] = useState(null);
 
     const updateText = () => {
         if (editMessage) {
@@ -24,7 +24,6 @@ const Card = ({ post }) => {
         }
         setUpdateModal(false);
     }
-
 
     return (
         <article className='post_container' key={post.idposts}>
@@ -48,7 +47,7 @@ const Card = ({ post }) => {
             )}
             <footer className='post_footer'>
                 <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}>
-                    {modalComment && <h3>Hello World !</h3>}
+                    {modalComment && <CommentCard post={post} key={post.idposts} />} 
                 </i>
                 <i className="far fa-thumbs-up icon_like"></i>
             </footer>

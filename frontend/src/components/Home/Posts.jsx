@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getComments } from '../../actions/comment_actions';
 import { getPosts } from '../../actions/post_actions';
 import Card from './Post/Card';
 
@@ -8,11 +9,11 @@ const Posts = () => {
     const [loadPost, setLoadPost] = useState(true)
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer)
-
     
     useEffect(() => {
         if (loadPost) {
             dispatch(getPosts())
+            dispatch(getComments())
             setLoadPost(false)
         }
     }, [loadPost, dispatch])
