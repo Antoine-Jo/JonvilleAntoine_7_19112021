@@ -10,6 +10,7 @@ const CommentCard = ({ post }) => {
     const commentsData = useSelector((state) => state.commentReducer);
     const dispatch = useDispatch();
 
+    // TODO Test de mettre le useEffect dans le component Card...
     useEffect(() => {
         dispatch(getComments(post.idposts))
     }, [dispatch])
