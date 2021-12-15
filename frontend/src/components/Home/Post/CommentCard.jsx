@@ -21,18 +21,19 @@ const CommentCard = ({ post }) => {
     return (
         <div className='comments_container' key={post.idposts}>
             {commentsData.map((comment) => {
-                if (comment === 0) return (<p>Il n'y a aucune commentaire...</p>)
                 if (post.idposts === comment.postId) {
                     return (
-                        <div className='bloc_comment'>{usersData.map((user) => {
-                                if (user.id === comment.userId) return <h4>{user.name} {user.firstname}</h4>
+                        <div className='bloc_comment' key={comment.id}>
+                            {usersData.map((user) => {
+                                if (user.id === comment.userId) return <h4 className='comment_title' key={comment.id}>{user.name} {user.firstname}</h4>
                                 return null
                             })} 
-                        <p>{dateParser(comment.create_time)}</p>
-                        <p>{comment.text}</p>
+                        <p className='comment_date'>{dateParser(comment.create_time)}</p>
+                        <p className='comment_text'>{comment.text}</p>
                         </div>
                     )
-                } 
+                }
+            return null 
             })}
         </div>
     );
