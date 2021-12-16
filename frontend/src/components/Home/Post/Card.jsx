@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
@@ -6,10 +6,10 @@ import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
 import DeleteCard from './DeleteCard';
 import CommentCard from './CommentCard';
-import { getComments } from '../../../actions/comment_actions';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
+    const commentsData = useSelector((state) => state.commentReducer)
     const dispatch = useDispatch();
     const uid = useContext(UidContext);
     const [modalComment, setModalComment] = useState(false);
@@ -58,7 +58,13 @@ const Card = ({ post }) => {
             <footer className='post_footer'>
                 <i className="fas fa-comments icon_comment" onClick={handleComment}></i>
                 <i className="far fa-thumbs-up icon_like"></i>
-                {modalComment && <CommentCard post={post} key={post.idposts} />} 
+                {modalComment &&
+                    <div className='comments_bloc'>
+                        <CommentCard post={post} key={post.idposts} />
+                        <textarea defaultValue='Ajouter un commentaire'/>
+                        <button>Envoyer</button>
+                    </div> 
+                } 
             </footer>
         </article>
     );
