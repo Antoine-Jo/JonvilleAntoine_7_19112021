@@ -6,15 +6,16 @@ import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
 import DeleteCard from './DeleteCard';
 import CommentCard from './CommentCard';
+import { addComment, getComments } from '../../../actions/comment_actions';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
-    const commentsData = useSelector((state) => state.commentReducer)
     const dispatch = useDispatch();
     const uid = useContext(UidContext);
     const [modalComment, setModalComment] = useState(false);
     const [updateModal, setUpdateModal] = useState(false);
     const [editMessage, setEditMessage] = useState(null);
+    const [addCom, setAddCom] = useState(null)
 
     const updateText = () => {
         if (editMessage) {
@@ -25,15 +26,16 @@ const Card = ({ post }) => {
         }
         setUpdateModal(false);
     }
-
-    // useEffect(() => {
-    //     dispatch(getComments(post.idposts))
-    // })
-
-    const handleComment = () => {
-        // dispatch(getComments(post.idposts));
-        setModalComment(!modalComment)
+    // TODO Fix problème du texarea qui se remet pas à 0 après l'envoi du commentaire
+    const createComment = () => {
+        if (addCom) {
+            dispatch(addComment(uid, addCom, post.idposts))
+            .then(() => {
+                dispatch(getComments(post.idposts))
+            })
+        }
     }
+
 
     return (
         <article className='post_container' key={post.idposts}>
@@ -56,13 +58,13 @@ const Card = ({ post }) => {
                 </div>
             )}
             <footer className='post_footer'>
-                <i className="fas fa-comments icon_comment" onClick={handleComment}></i>
+                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}></i>
                 <i className="far fa-thumbs-up icon_like"></i>
                 {modalComment &&
                     <div className='comments_bloc'>
                         <CommentCard post={post} key={post.idposts} />
-                        <textarea defaultValue='Ajouter un commentaire'/>
-                        <button>Envoyer</button>
+                        <textarea placeholder='Ajouter un commentaire' onChange={e => setAddCom(e.target.value)} className='create_comment' />
+                        <button className='btn_comment' onClick={createComment}>Envoyer</button>
                     </div> 
                 } 
             </footer>
