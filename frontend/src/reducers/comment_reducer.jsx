@@ -1,4 +1,4 @@
-import { GET_ALL_COMMENTS, GET_COMMENTS, UPDATE_COMMENT } from "../actions/comment_actions";
+import { DELETE_COMMENT, GET_ALL_COMMENTS, GET_COMMENTS, UPDATE_COMMENT } from "../actions/comment_actions";
 
 
 const initialState = {};
@@ -18,6 +18,8 @@ export default function commentReducer(state = initialState, action) {
                     }
                 } else return comment;
             })
+        case DELETE_COMMENT:
+            return state.filter((comment) => comment.id !== action.payload.id);
         default:
             return state
     }

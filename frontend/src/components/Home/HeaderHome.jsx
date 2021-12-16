@@ -24,7 +24,7 @@ const HeaderHome = () => {
         <div className='header_container'>
             {uid ? (
                 <>
-                <h3 className='title_header'>Bienvenue {userData.firstname}</h3>
+                <h3 className='title_header'>Bienvenue {userData.name} {userData.firstname}</h3>
                 <i className="far fa-id-card profil" onClick={viewProfil}></i>
                 <i className="fas fa-sign-out-alt signout" onClick={logout}></i>
                 </>

@@ -1,27 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../../actions/comment_actions';
 import { dateParser } from '../../../services/DateForm';
-import { UidContext } from '../../AppContext';
 import EditComment from './EditComment';
 
 const CommentCard = ({ post }) => {
-    const userData = useSelector((state) => state.userReducer)
     const usersData = useSelector((state) => state.usersReducer)
     const commentsData = useSelector((state) => state.commentReducer);
-    const uid = useContext(UidContext)
     const dispatch = useDispatch();
-    const [editText, setEditText] = useState(null);
-    const [editModal, setEditModal] = useState(false)
 
     // TODO Test de mettre le useEffect dans le component Card...
     useEffect(() => {
         dispatch(getComments(post.idposts))
-    }, [dispatch])
-
-    const handleComment = () => {
-
-    }
+    }, [dispatch, post])
 
     return (
         <div className='comments_container'>

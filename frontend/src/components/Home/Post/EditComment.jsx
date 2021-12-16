@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments, updateComment } from '../../../actions/comment_actions';
+import { deleteComment, getComments, updateComment } from '../../../actions/comment_actions';
 import { UidContext } from '../../AppContext';
 
 const EditComment = ({ comment, post }) => {
@@ -23,6 +23,10 @@ const EditComment = ({ comment, post }) => {
         setEdit(!edit)
     }
 
+    const deleteCom = () => {
+        dispatch(deleteComment(comment.id, userData.admin))
+    }
+
     useEffect(() => {
         const checkAuthor = () => {
             if(uid === comment.userId || userData.admin === 1) {
@@ -30,13 +34,20 @@ const EditComment = ({ comment, post }) => {
             }
         }
         checkAuthor();
-    }, [uid, comment.userId])
+    }, [uid, comment.userId, userData])
 
 
     return (
         <div className='edit_comment_container'>
             {isAuthor && edit === false && (
+                <>
                 <i className="fas fa-edit edit_card" onClick={() => setEdit(!edit)}></i>
+                <i className="fas fa-trash delete_card" onClick={() => {
+                    if (window.confirm('Voulez vous supprimer ce post ?')){ 
+                        deleteCom(); 
+                    }
+                }}></i>
+                </>
             )}
             {isAuthor && edit && (
                 <>
