@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
@@ -7,6 +7,7 @@ import { dateParser } from '../../../services/DateForm';
 import DeleteCard from './DeleteCard';
 import CommentCard from './CommentCard';
 import { addComment, getComments } from '../../../actions/comment_actions';
+import axios from 'axios';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
@@ -16,6 +17,7 @@ const Card = ({ post }) => {
     const [updateModal, setUpdateModal] = useState(false);
     const [editMessage, setEditMessage] = useState(null);
     const [addCom, setAddCom] = useState('')
+    const [nbrComment, setNbrComment] = useState(0)
 
     const updateText = () => {
         if (editMessage) {
@@ -36,6 +38,23 @@ const Card = ({ post }) => {
             })
         }
     }
+    useEffect(() => {
+
+        const countNumber = async () => {
+            await axios ({
+                method: 'GET',
+                mode: 'cors',
+                url: `http://localhost:5000/api/post/comments/comments/${post.idposts}`,
+                withCredentials: true,
+            })
+            .then((res) => {
+                const nbrComment = res.data.total
+                setNbrComment(nbrComment)
+                console.log(nbrComment);
+            }, [nbrComment])
+        }
+        countNumber()
+    })
 
     return (
         <article className='post_container' key={post.idposts}>
@@ -58,7 +77,9 @@ const Card = ({ post }) => {
                 </div>
             )}
             <footer className='post_footer'>
-                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}></i>
+                <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}>
+                <span className='nbr_comment' onChange={e => setNbrComment(nbrComment)}>{nbrComment}</span>
+                </i>
                 <i className="far fa-thumbs-up icon_like"></i>
                 {modalComment &&
                     <div className='comments_bloc'>

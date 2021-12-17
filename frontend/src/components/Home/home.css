@@ -150,6 +150,16 @@
     cursor: pointer;
 }
 
+.nbr_comment {
+    grid-area: icon-comment;
+    font-size: 0.6em;
+    margin-left: 0.5em;
+    color: #63859b;
+    position: relative;
+    top: 0.5em;
+    left: -0.3em;
+}
+
 .icon_like {
     font-size: 2.2em;
     justify-self: center;

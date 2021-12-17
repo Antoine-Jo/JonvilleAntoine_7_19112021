@@ -32,7 +32,7 @@ export const createPost = (text) => {
             }
         })
         .then((res) => {
-            dispatch({ type: CREATE_POST, payload: {} })
+            dispatch({ type: CREATE_POST, payload: res.data.total })
         })
         .catch((err) => console.log(err))
     }
