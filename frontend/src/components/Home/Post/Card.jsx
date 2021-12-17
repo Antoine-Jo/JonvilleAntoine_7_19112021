@@ -37,7 +37,6 @@ const Card = ({ post }) => {
         }
     }
 
-
     return (
         <article className='post_container' key={post.idposts}>
             <img src={logo} alt='avatar author' className='logo_user'/>
