@@ -38,8 +38,9 @@ const Card = ({ post }) => {
             })
         }
     }
-    useEffect(() => {
 
+    //TODO Améliorer le useEffect avec le Reducer
+    useEffect(() => {
         const countNumber = async () => {
             await axios ({
                 method: 'GET',
