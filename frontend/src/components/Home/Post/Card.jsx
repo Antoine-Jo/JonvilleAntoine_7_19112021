@@ -15,7 +15,7 @@ const Card = ({ post }) => {
     const [modalComment, setModalComment] = useState(false);
     const [updateModal, setUpdateModal] = useState(false);
     const [editMessage, setEditMessage] = useState(null);
-    const [addCom, setAddCom] = useState(null)
+    const [addCom, setAddCom] = useState('')
 
     const updateText = () => {
         if (editMessage) {
@@ -26,12 +26,13 @@ const Card = ({ post }) => {
         }
         setUpdateModal(false);
     }
-    // TODO Fix problème du texarea qui se remet pas à 0 après l'envoi du commentaire
+
     const createComment = () => {
         if (addCom) {
             dispatch(addComment(uid, addCom, post.idposts))
             .then(() => {
                 dispatch(getComments(post.idposts))
+                setAddCom('')
             })
         }
     }
@@ -63,7 +64,7 @@ const Card = ({ post }) => {
                 {modalComment &&
                     <div className='comments_bloc'>
                         <CommentCard post={post} key={post.idposts} />
-                        <textarea placeholder='Ajouter un commentaire' onChange={e => setAddCom(e.target.value)} className='create_comment' />
+                        <textarea placeholder='Ajouter un commentaire' value={addCom} onChange={e => setAddCom(e.target.value)} className='create_comment' />
                         <button className='btn_comment' onClick={createComment}>Envoyer</button>
                     </div> 
                 } 
