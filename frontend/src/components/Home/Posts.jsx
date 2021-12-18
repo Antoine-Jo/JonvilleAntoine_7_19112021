@@ -4,7 +4,7 @@ import Card from './Post/Card';
 
 const Posts = () => {
     const posts = useSelector((state) => state.allPostsReducer)
-    
+
     return (
         <section>
            {posts.map((post) => {

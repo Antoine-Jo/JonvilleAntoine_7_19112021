@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, updatePost } from '../../../actions/post_actions';
+import { getPosts, likePost, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
 import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
@@ -18,7 +18,9 @@ const Card = ({ post }) => {
     const [editMessage, setEditMessage] = useState(null);
     const [addCom, setAddCom] = useState('')
     const [nbrComment, setNbrComment] = useState(0)
-
+    const [like, setLike] = useState(false);
+    const likeData = useSelector((state) => state.postReducer)
+    console.log(likeData);
     const updateText = () => {
         if (editMessage) {
             dispatch(updatePost(editMessage, post.idposts, userData.admin))
@@ -57,6 +59,20 @@ const Card = ({ post }) => {
         countNumber()
     })
 
+        const handleLike = async () => {
+            
+            const data = {
+                uid,
+                idposts: post.idposts
+            }
+            
+            await dispatch(likePost(data, post.idposts))
+            .then(() => {
+                if(likeData.likes === 0) return setLike(true) 
+                return setLike(false)
+            })
+        }
+
     return (
         <article className='post_container' key={post.idposts}>
             <img src={logo} alt='avatar author' className='logo_user'/>
@@ -81,7 +97,7 @@ const Card = ({ post }) => {
                 <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}>
                 <span className='nbr_comment' onChange={e => setNbrComment(nbrComment)}>{nbrComment}</span>
                 </i>
-                <i className="far fa-thumbs-up icon_like"></i>
+                <i className={like ? "far fa-thumbs-up icon_like active-like" : "far fa-thumbs-up icon_like"} onClick={handleLike}></i>
                 {modalComment &&
                     <div className='comments_bloc'>
                         <CommentCard post={post} key={post.idposts} />

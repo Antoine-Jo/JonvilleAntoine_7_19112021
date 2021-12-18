@@ -6,6 +6,7 @@ export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const CREATE_POST = "CREATE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
+export const LIKE_POST = "LIKE_POST";
 
 export const getPosts = (num) => {
     return (dispatch) => {
@@ -75,5 +76,24 @@ export const deletePost = (idposts, admin) => {
             dispatch({ type: DELETE_POST, payload: {idposts: idposts} })
         })
         .catch((err) => console.log(err))
+    }
+}
+
+export const likePost = (uid, idposts) => {
+    return (dispatch) => {
+        return axios ({
+            method: 'PATCH',
+            mode: 'cors',
+            url: `http://localhost:5000/api/post/${idposts}/like`,
+            data: {
+                uid,
+                idposts
+            },
+            withCredentials: true
+        })
+        .then((res) => {
+            dispatch({ type: LIKE_POST, payload: {likes: res.data.likes}})
+            console.log(res.data.likes);
+        })
     }
 }
