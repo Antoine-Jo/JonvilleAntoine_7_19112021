@@ -1,7 +1,7 @@
 import { DELETE_COMMENT, GET_ALL_COMMENTS, GET_COMMENTS, UPDATE_COMMENT } from "../actions/comment_actions";
 
 
-const initialState = {};
+const initialState = [];
 
 export default function commentReducer(state = initialState, action) {
     switch (action.type) {

@@ -2,11 +2,12 @@ import axios from 'axios';
 
 // Posts
 export const GET_POSTS = "GET_POSTS";
+export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const CREATE_POST = "CREATE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 
-export const getPosts = () => {
+export const getPosts = (num) => {
     return (dispatch) => {
         return axios ({
             method: 'GET',
@@ -14,7 +15,9 @@ export const getPosts = () => {
             withCredentials: true
         })
         .then((res) => {
-            dispatch({ type: GET_POSTS, payload: res.data })
+            const array = res.data.slice(0, num)
+            dispatch({ type: GET_POSTS, payload: array });
+            dispatch({ type: GET_ALL_POSTS, payload: res.data })
         })
         .catch((err) => console.log(err))
     }

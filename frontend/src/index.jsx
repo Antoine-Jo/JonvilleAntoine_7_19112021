@@ -10,6 +10,8 @@ import { getAllUsers } from './actions/users_actions';
 
 // Dev tools
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { getPosts } from './actions/post_actions';
+import { getComments } from './actions/comment_actions';
 
 
 const store = createStore(
@@ -17,6 +19,8 @@ const store = createStore(
 )
 
 store.dispatch(getAllUsers());
+store.dispatch(getPosts());
+store.dispatch(getComments());
 
 ReactDOM.render(
   <Provider store={store}>
