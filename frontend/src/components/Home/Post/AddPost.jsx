@@ -8,13 +8,13 @@ const AddPost = () => {
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
 
-    const handlePost = () => {
-        dispatch(createPost(message))
-        .then(() => {
-            dispatch(getPosts());
-            setMessage('')
-        })
+    const handlePost = async () => {
+        await dispatch(createPost(message))
+        dispatch(getPosts());
+        setMessage('')
     }
+        
+        
 
     return (
         <div className='add_container'>

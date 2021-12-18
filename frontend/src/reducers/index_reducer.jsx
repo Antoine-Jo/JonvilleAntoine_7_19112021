@@ -8,7 +8,7 @@ import allPostsReducer from "./AllPosts_reducer";
 export default combineReducers({
     userReducer,
     usersReducer,
+    allPostsReducer,
     postReducer,
     commentReducer,
-    allPostsReducer,
 });

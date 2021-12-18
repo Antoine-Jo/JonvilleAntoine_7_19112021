@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost } from '../../../actions/post_actions';
+import { deletePost, getPosts } from '../../../actions/post_actions';
 
 const DeleteCard = (props) => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.userReducer)
     // console.log(props.id);
-    const deleteP = () => {
-        dispatch(deletePost(props.id, userData.admin))
+    const deleteP = async () => {
+        await dispatch(deletePost(props.id, userData.admin))
+        dispatch(getPosts())
     }
 
     return (

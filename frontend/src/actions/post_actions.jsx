@@ -35,7 +35,7 @@ export const createPost = (text) => {
             }
         })
         .then((res) => {
-            dispatch({ type: CREATE_POST, payload: res.data.total })
+            // dispatch({ type: CREATE_POST, payload: res.data.text })
         })
         .catch((err) => console.log(err))
     }

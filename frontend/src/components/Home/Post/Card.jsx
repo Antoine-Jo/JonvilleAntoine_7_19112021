@@ -51,7 +51,7 @@ const Card = ({ post }) => {
             .then((res) => {
                 const nbrComment = res.data.total
                 setNbrComment(nbrComment)
-                console.log(nbrComment);
+                // console.log(nbrComment);
             }, [nbrComment])
         }
         countNumber()
