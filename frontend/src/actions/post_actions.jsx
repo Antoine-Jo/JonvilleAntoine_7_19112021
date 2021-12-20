@@ -79,21 +79,20 @@ export const deletePost = (idposts, admin) => {
     }
 }
 
-export const likePost = (uid, idposts) => {
+export const likePost = (idposts, uid) => {
     return (dispatch) => {
         return axios ({
-            method: 'PATCH',
+            method: 'GET',
             mode: 'cors',
-            url: `http://localhost:5000/api/post/${idposts}/like`,
+            withCredentials: true,
             data: {
-                uid,
-                idposts
+                uid
             },
-            withCredentials: true
+            url: `http://localhost:5000/api/post/${idposts}/likes`
         })
         .then((res) => {
-            dispatch({ type: LIKE_POST, payload: {likes: res.data.likes}})
-            console.log(res.data.likes);
+            dispatch({ type: LIKE_POST, payload: {likes: res.data}})
         })
+        .catch((err) => console.log(err))
     }
 }

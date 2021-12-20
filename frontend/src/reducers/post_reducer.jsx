@@ -1,14 +1,14 @@
 import { DELETE_POST, GET_POSTS, LIKE_POST, UPDATE_POST } from "../actions/post_actions";
 
-const initialState = {};
+const initialState = {post: {}, likes: {}};
 
 export default function postReducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS:
             return {
-                state: action.payload,
-                likes: {}
-            };
+                post: action.payload,
+                like: {}
+            }
         case UPDATE_POST:
             return state.map((post) => {
                 if (post.idposts === action.payload.idposts) {
@@ -18,13 +18,17 @@ export default function postReducer(state = initialState, action) {
                 }
                 } else return post;
             })
-        case LIKE_POST:
-            return {
-                ...state,
-                likes: action.payload.likes
-            }
         case DELETE_POST:
             return state.filter((post) => post.idposts !== action.payload.idposts);
+        case LIKE_POST:
+            return state.map((post) => {
+                if(post.idposts === action.payload.idposts) {
+                    return {
+                        ...state,
+                        likes: action.payload.likes
+                    }
+                } else return post
+            })
         default: 
             return state
     }
