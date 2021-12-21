@@ -5,6 +5,7 @@ import { UidContext } from '../../AppContext';
 const LikeInteract = ({ post }) => {
     const uid = useContext(UidContext);
     const [colorLike, setColorLike] = useState(false);
+    const [nbrLikes, setNbrLikes] = useState(null);
 
     const handleLike = async () => {
         await axios ({
@@ -37,10 +38,40 @@ const LikeInteract = ({ post }) => {
         }
         liker()
     }, [post, uid])
+
+    useEffect(() => {
+        const countLikes = async () => {
+            await axios ({
+                method: 'GET',
+                mode: 'cors',
+                withCredentials: true,
+                url: `http://localhost:5000/api/post/${post.idposts}/allLikes`,
+            })
+            .then((res) => {
+                const nbrLikes = res.data.total
+                // console.log(nbrLikes);
+                setNbrLikes(nbrLikes);
+            }, [nbrLikes])
+        }
+        countLikes();
+    })
     
     return (
         <>
-        {colorLike ? <i className="far fa-thumbs-up icon_like active-like" onClick={handleLike}></i> : <i className="far fa-thumbs-up icon_like" onClick={handleLike}></i>}
+        {colorLike ? (
+        <>
+            <i className="far fa-thumbs-up icon_like active-like" onClick={handleLike}>
+            <span className="nbr_likes" onChange={e => setNbrLikes(nbrLikes)}>{nbrLikes}</span>
+            </i>
+        </>
+        ) : (
+        <>
+            <i className="far fa-thumbs-up icon_like" onClick={handleLike}>
+            <span className="nbr_likes" onChange={e => setNbrLikes(nbrLikes)}>{nbrLikes}</span>
+            </i>
+        </>
+        )}
+        {/* <span className="nbr_likes" onChange={e => setNbrLikes(nbrLikes)}>{nbrLikes}</span> */}
         </>
     );
 };

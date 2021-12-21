@@ -7,6 +7,7 @@ const Posts = () => {
 
     return (
         <section>
+            <i className="fas fa-sync refresh-posts"></i>
            {posts.map((post) => {
                     return <Card post={post} key={post.idposts}/>
                 })
