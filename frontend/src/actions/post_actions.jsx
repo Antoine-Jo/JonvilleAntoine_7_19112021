@@ -57,7 +57,7 @@ export const updatePost = (text, idposts, admin) => {
         .then((res) => {
             dispatch({ type: UPDATE_POST, payload: {text: text} })
         })
-        .catch((err) => console.log(err.response.data.err))
+        // .catch((err) => console.log(err.response.data.err))
     }
 }
 
@@ -91,7 +91,8 @@ export const likePost = (idposts, uid) => {
             url: `http://localhost:5000/api/post/${idposts}/likes`
         })
         .then((res) => {
-            dispatch({ type: LIKE_POST, payload: {likes: res.data}})
+            dispatch({ type: LIKE_POST, payload: res.data})
+            console.log(res.data);
         })
         .catch((err) => console.log(err))
     }

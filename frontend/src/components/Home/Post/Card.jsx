@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, likePost, updatePost } from '../../../actions/post_actions';
+import { getPosts, updatePost } from '../../../actions/post_actions';
 import logo from '../../../images/AvatarP7.png'
 import { UidContext } from '../../AppContext';
 import { dateParser } from '../../../services/DateForm';
@@ -74,8 +74,21 @@ const Card = ({ post }) => {
     }
 
     useEffect(() => {
-        dispatch(likePost(uid, post.idposts))
-    }, [post, uid, dispatch])
+        const liker = async () => {
+            const res = await axios ({
+                method: 'GET',
+                mode: 'cors',
+                withCredentials: true,
+                data: {
+                    uid
+                },
+                url: `http://localhost:5000/api/post/${post.idposts}/likes`
+            })
+        if (res.data[0]) return setColorLike(true)
+        return setColorLike(false)
+        }
+        liker()
+    }, [post, uid])
 
     return (
         <article className='post_container' key={post.idposts}>
