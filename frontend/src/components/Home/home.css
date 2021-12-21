@@ -18,6 +18,13 @@
     cursor: pointer;
 }
 
+.refresh-posts {
+    margin-left: 1em;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+
 .post_container {
     width: auto;
     margin: 2em 1em;

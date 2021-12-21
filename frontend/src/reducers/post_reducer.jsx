@@ -16,7 +16,7 @@ export default function postReducer(state = initialState, action) {
                 } else return post;
             })
         case DELETE_POST:
-            return state.post.filter((post) => post.idposts !== action.payload.idposts);
+            return state.filter((post) => post.idposts !== action.payload.idposts);
         default: 
             return state
     }
