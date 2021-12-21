@@ -8,6 +8,7 @@ import DeleteCard from './DeleteCard';
 import CommentCard from './CommentCard';
 import { addComment, getComments } from '../../../actions/comment_actions';
 import axios from 'axios';
+import LikeInteract from './LikeInteract';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
@@ -18,7 +19,6 @@ const Card = ({ post }) => {
     const [editMessage, setEditMessage] = useState(null);
     const [addCom, setAddCom] = useState('')
     const [nbrComment, setNbrComment] = useState(0)
-    const [colorLike, setColorLike] = useState(false);
 
     const updateText = () => {
         if (editMessage) {
@@ -58,38 +58,6 @@ const Card = ({ post }) => {
         countNumber()
     })
 
-    const handleLike = async () => {
-        await axios ({
-            method: 'PATCH',
-            mode: 'cors',
-            withCredentials: true,
-            data: {
-                uid
-            },
-            url: `http://localhost:5000/api/post/${post.idposts}/like`
-        })
-        .then(() => {
-            setColorLike(!colorLike)
-        })
-    }
-
-    useEffect(() => {
-        const liker = async () => {
-            const res = await axios ({
-                method: 'GET',
-                mode: 'cors',
-                withCredentials: true,
-                data: {
-                    uid
-                },
-                url: `http://localhost:5000/api/post/${post.idposts}/likes`
-            })
-        if (res.data[0]) return setColorLike(true)
-        return setColorLike(false)
-        }
-        liker()
-    }, [post, uid])
-
     return (
         <article className='post_container' key={post.idposts}>
             <img src={logo} alt='avatar author' className='logo_user'/>
@@ -114,7 +82,7 @@ const Card = ({ post }) => {
                 <i className="fas fa-comments icon_comment" onClick={() => setModalComment(!modalComment)}>
                 <span className='nbr_comment' onChange={e => setNbrComment(nbrComment)}>{nbrComment}</span>
                 </i>
-                {colorLike ? <i className="far fa-thumbs-up icon_like active-like" onClick={handleLike}></i> : <i className="far fa-thumbs-up icon_like" onClick={handleLike}></i>}
+                <LikeInteract post={post} />
                 {modalComment &&
                     <div className='comments_bloc'>
                         <CommentCard post={post} key={post.idposts} />
