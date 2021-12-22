@@ -9,7 +9,7 @@ function validName(name) {
 }
 
 function validPassword(password) {
-  if (!regex.password.test(password) && password.length > 5) return true;
+  if (!regex.password.test(password) && password.length > 2) return true;
   else return false
 }
 

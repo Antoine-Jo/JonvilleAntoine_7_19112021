@@ -28,6 +28,7 @@
     box-shadow: 5px 5px 5px grey;
     cursor: pointer;
     text-align: center;
+    margin-top: 1em;
 }
 
 .btn_form:hover {
@@ -45,7 +46,7 @@
 
 .err_register {
     color: red;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     font-weight: bold;
     margin-bottom: 0;
     font-size: 1.5em;

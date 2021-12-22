@@ -23,7 +23,7 @@ const SignUpForm = () => {
         setPrenomErr(validName(prenom));
         setEmailErr(validEmail(email));
         setPwdErr(validPassword(password));
-        setCtrlPwdErr(password !== ctrlPwd && ctrlPwd.length > 5)
+        setCtrlPwdErr(password !== ctrlPwd && ctrlPwd.length > 2)
     }, [name, prenom, email, password, ctrlPwd])
 
     const validate = async (e) => {
