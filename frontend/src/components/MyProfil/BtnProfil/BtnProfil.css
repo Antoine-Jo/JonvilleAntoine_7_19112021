@@ -22,7 +22,7 @@
 .btn_delete {
     margin-top: 20px;
     margin-bottom: 30px;
-    width: 25%;
+    width: 40%;
     height: 2.5em;
     border-radius: 20px;
     border: 1px solid #bb0b0b;
@@ -34,4 +34,16 @@
 .btn_delete:hover {
     filter: brightness(130%);
     transform: scale(1.1);
+}
+
+@media screen and (min-width: 1175px) {
+    .btn_delete {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1530px) {
+    .btn_delete {
+        width: 20%;
+    }
 }

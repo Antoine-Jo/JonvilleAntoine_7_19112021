@@ -1,7 +1,7 @@
 .modal_container {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
     height: auto;
     border: 1px solid grey;
     padding: 10px;
@@ -14,12 +14,14 @@
 .modal_container label {
     margin-bottom: 0.7em;
     font-weight: bold;
+    font-size: 1.3em;
 }
 
 .modal_container input {
     margin-bottom: 0.7em;
-    width: 70%;
-    height: 1.3em;
+    width: 90%;
+    height: 2em;
+    font-size: 1em;
     align-self: center;
 }
 
@@ -41,4 +43,16 @@
 .modal_container button:hover {
     filter: brightness(130%);
     transform: scale(1.1);
+}
+
+@media screen and (min-width: 768px) {
+    .modal_container {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1530px) {
+    .modal_container {
+        width: 70%;
+    }
 }

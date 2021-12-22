@@ -1,6 +1,6 @@
 .profil_container {
-    width: 95%;
-    margin: 0 20px;
+    width: 90%;
+    margin: auto;
 }
 
 .profil_header {
@@ -10,19 +10,24 @@
     grid-template-rows: 1fr;
     align-items: center;
     justify-items: center;
+    margin: 1em 0;
 }
 
 .profil_title {
     text-align: center;
-    margin-right: 1.75em;
-    font-size: 3em;
+    font-size: 2.5em;
     text-decoration: underline black;
 }
 
 .profil_closed {
-    font-size: 3em;
+    font-size: 2.5em;
     color: #1DA1F2;
     align-self: center;
-    margin-left: 20px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+    .profil_container {
+        width: 50%;
+    }
 }
