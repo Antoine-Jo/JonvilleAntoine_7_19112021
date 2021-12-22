@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { UidContext } from '../../AppContext';
+import { UidContext } from '../../../../AppContext';
+import './Like.css';
 
 const LikeInteract = ({ post }) => {
     const uid = useContext(UidContext);
@@ -71,7 +72,6 @@ const LikeInteract = ({ post }) => {
             </i>
         </>
         )}
-        {/* <span className="nbr_likes" onChange={e => setNbrLikes(nbrLikes)}>{nbrLikes}</span> */}
         </>
     );
 };

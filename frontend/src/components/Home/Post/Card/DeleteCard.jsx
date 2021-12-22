@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost, getPosts } from '../../../actions/post_actions';
+import { deletePost, getPosts } from '../../../../actions/post_actions';
+import './DeleteCard.css';
 
 const DeleteCard = (props) => {
     const dispatch = useDispatch();

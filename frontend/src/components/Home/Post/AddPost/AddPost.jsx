@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createPost, getPosts } from '../../../actions/post_actions';
+import { createPost, getPosts } from '../../../../actions/post_actions';
+import './AddPost.css'
 
 const AddPost = () => {
 

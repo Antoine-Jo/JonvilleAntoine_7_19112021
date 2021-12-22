@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteComment, getComments, updateComment } from '../../../actions/comment_actions';
-import { UidContext } from '../../AppContext';
+import { deleteComment, getComments, updateComment } from '../../../../../actions/comment_actions';
+import { UidContext } from '../../../../AppContext';
 
 const EditComment = ({ comment, post }) => {
     const userData = useSelector((state) => state.userReducer);
@@ -41,7 +41,7 @@ const EditComment = ({ comment, post }) => {
         <div className='edit_comment_container'>
             {isAuthor && edit === false && (
                 <>
-                <i className="fas fa-edit edit_card" onClick={() => setEdit(!edit)}></i>
+                <i className="fas fa-edit edit_comment" onClick={() => setEdit(!edit)}></i>
                 <i className="fas fa-trash delete_card" onClick={() => {
                     if (window.confirm('Voulez vous supprimer ce post ?')){ 
                         deleteCom(); 

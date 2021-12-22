@@ -1,9 +1,10 @@
 import React from 'react';
+import './HeaderHome.css';
 import { useNavigate } from 'react-router-dom';
-import { UidContext } from '../AppContext';
+import { UidContext } from '../../AppContext';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut } from '../../actions/user_actions';
+import { logOut } from '../../../actions/user_actions';
 
 const HeaderHome = () => {
     const uid = useContext(UidContext);

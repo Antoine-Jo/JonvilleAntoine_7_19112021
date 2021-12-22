@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments } from '../../../actions/comment_actions';
-import { dateParser } from '../../../services/DateForm';
+import { getComments } from '../../../../../actions/comment_actions';
+import { dateParser } from '../../../../../services/DateForm';
 import EditComment from './EditComment';
+import './Comment.css'
 
 const CommentCard = ({ post }) => {
     const usersData = useSelector((state) => state.usersReducer)

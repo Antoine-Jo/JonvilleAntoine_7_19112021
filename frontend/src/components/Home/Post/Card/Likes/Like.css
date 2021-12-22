@@ -1,0 +1,21 @@
+.icon_like {
+    font-size: 2.2em;
+    justify-self: center;
+    grid-area: icon-like;
+    margin: 0.5em 0;
+    cursor: pointer;
+    color: gray;
+}
+
+.active-like {
+    color: #1DA1F2;
+}
+
+.nbr_likes {
+    justify-self: center;
+    position: relative;
+    font-size: 0.5em;
+    top: -1.3em;
+    left: -0.4em;
+    color: #63859b;
+}

@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, updatePost } from '../../../actions/post_actions';
-import logo from '../../../images/AvatarP7.png'
-import { UidContext } from '../../AppContext';
-import { dateParser } from '../../../services/DateForm';
+import { getPosts, updatePost } from '../../../../actions/post_actions';
+import logo from '../../../../images/AvatarP7.png'
+import { UidContext } from '../../../AppContext';
+import { dateParser } from '../../../../services/DateForm';
 import DeleteCard from './DeleteCard';
-import CommentCard from './CommentCard';
-import { addComment, getComments } from '../../../actions/comment_actions';
+import CommentCard from './Comment/CommentCard';
+import { addComment, getComments } from '../../../../actions/comment_actions';
 import axios from 'axios';
-import LikeInteract from './LikeInteract';
+import LikeInteract from './Likes/LikeInteract';
+import './Card.css';
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
