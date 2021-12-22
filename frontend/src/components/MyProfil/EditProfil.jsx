@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './EditProfil.css';
-import FieldProfil from './FieldProfil';
+import FieldProfil from './FieldProfil/FieldProfil';
 import { Link } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import Subscription from '../../pages/Subscription';

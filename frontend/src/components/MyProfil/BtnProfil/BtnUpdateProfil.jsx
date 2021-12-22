@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import UpdateModal from './UpdateModal';
+import UpdateModal from '../UpdateProfil/UpdateModal';
+import './BtnProfil.css';
 
 const BtnUpdateProfil = () => {
 

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import avatar from '../../images/AvatarP7.png';
+import avatar from '../../../images/AvatarP7.png';
 import { useSelector } from 'react-redux';
-import { UidContext } from '../AppContext';
-import BtnUpdateProfil from './BtnUpdateProfil';
-import BtnDeleteProfil from './BtnDeleteProfil';
+import { UidContext } from '../../AppContext';
+import BtnUpdateProfil from '../BtnProfil/BtnUpdateProfil';
+import BtnDeleteProfil from '../BtnProfil/BtnDeleteProfil';
+import './FieldProfil.css';
 
 const FieldProfil = () => {
     const userData = useSelector((state) => state.userReducer);

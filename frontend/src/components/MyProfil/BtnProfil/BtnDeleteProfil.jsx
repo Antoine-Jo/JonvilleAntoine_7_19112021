@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteUser } from '../../actions/user_actions';
-import { UidContext } from '../AppContext';
+import { deleteUser } from '../../../actions/user_actions';
+import { UidContext } from '../../AppContext';
 
 const BtnDeleteProfil = () => {
 

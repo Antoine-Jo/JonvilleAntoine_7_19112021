@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, updateUser } from '../../actions/user_actions';
-import { UidContext } from '../AppContext';
+import { getUser, updateUser } from '../../../actions/user_actions';
+import { UidContext } from '../../AppContext';
+import './UpdateModal.css';
 
 const UpdateModal = ({showModal, hideModal}) => {
 
