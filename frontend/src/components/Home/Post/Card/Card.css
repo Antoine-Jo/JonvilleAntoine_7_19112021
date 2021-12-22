@@ -7,7 +7,7 @@
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.57);
     display: grid;
     grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr 1fr auto;
+    grid-template-rows: 1fr auto auto;
     grid-template-areas: 
     "image header"
     ". text"
@@ -15,17 +15,33 @@
 }
 
 .logo_user {
-    width: 40%;
+    width: 60%;
     margin: auto;
     padding-top: 1em;
     grid-area: image;
 }
 
 .post_header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "user icon"
+    "date date";
     align-items: center;
     justify-content: space-around;
     grid-area: header;
+    margin: 1em 0;
+}
+
+.post_header h3 {
+    grid-area: user;
+    text-align: center;
+}
+
+.post_header p {
+    grid-area: date;
+    margin: auto;
 }
 
 .edit_card {
@@ -33,6 +49,8 @@
     margin-left: 0.5em;
     color: #1DA1F2;
     cursor: pointer;
+    grid-area: icon;
+    justify-self: center;
 }
 .edit_card:hover {
     filter: brightness(130%);
@@ -42,7 +60,8 @@
 
 .post_text {
     grid-area: text;
-    padding: 20px;
+    padding: 10px;
+    font-size: 1.3em;
 }
 
 .edit_container {
@@ -63,7 +82,7 @@
 }
 
 .edit_btn {
-    width: 40%;
+    width: 60%;
     align-self: flex-end;
     height: 3em;
     margin: 0.7em 1em 1em 0;
@@ -132,9 +151,9 @@
 }
 
 .btn_comment {
-    width: 20%;
+    width: 50%;
     align-self: flex-end;
-    height: 2em;
+    height: 2.5em;
     margin: 0.7em 1em 1em 0;
     background-color: #1DA1F2;
     color: #fff;

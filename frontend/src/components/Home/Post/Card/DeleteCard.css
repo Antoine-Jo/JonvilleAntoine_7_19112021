@@ -1,6 +1,9 @@
 .delete_card {
     color: rgb(250, 115, 115);
     cursor: pointer;
+    grid-area: icon;
+    justify-self: end;
+    margin-right: 1em;
 }
 .delete_card:hover {
     animation: headshake 1s cubic-bezier(.36,.07,.19,.97) both;

@@ -10,6 +10,10 @@
     margin: 0.5em;
 }
 
+.comment_text {
+    font-size: 1.2em;
+}
+
 .edit_comment_container {
     margin-bottom: 5px;
 }
