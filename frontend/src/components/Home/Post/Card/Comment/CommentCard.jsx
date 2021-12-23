@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../../../../actions/comment_actions';
-import { dateParser } from '../../../../../services/DateForm';
+import { dateParserComment } from '../../../../../services/DateForm';
 import EditComment from './EditComment';
 import './Comment.css'
 
@@ -28,7 +28,7 @@ const CommentCard = ({ post }) => {
                         {/* {(comment.userId === uid || userData.admin === 1) && (
                             <i className="fas fa-edit edit_card" onClick={() => setEditModal(!editModal)} key={comment.id}></i>
                         )}  */}
-                        <p className='comment_date'>{dateParser(comment.create_time)}</p>
+                        <p className='comment_date'>{dateParserComment(comment.create_time)}</p>
                         <p className='comment_text'>{comment.text}</p>
                         <EditComment comment={comment} post={post} />
                         </div>

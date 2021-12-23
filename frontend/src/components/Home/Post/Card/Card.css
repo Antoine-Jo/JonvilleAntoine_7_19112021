@@ -163,3 +163,56 @@
     border: 1px solid;
     cursor: pointer;
 }
+
+.btn_comment:hover {
+    filter: brightness(130%);
+    transform: scale(1.3);
+    transition: transform 1s ease-out;
+}
+
+@media screen and (min-width: 768px) {
+    .post_container {
+        width: 80%;
+        margin: 4em auto;
+    }
+
+    .post_header h3 {
+        font-size: 1.5em;
+    }
+
+    .edit_card {
+        justify-self: end;
+        margin-right: 3em;
+    }
+
+    .edit_btn {
+        width: 35%;
+    }
+
+    .btn_comment {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .post_container {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 1335px) {
+    .post_container {
+        width: 50%;
+    }
+
+    .edit_text {
+        height: 10em;
+    }
+}
+
+@media screen and (min-width: 1575px) {
+    .post_container {
+        width: 30%;
+    }
+}
+
