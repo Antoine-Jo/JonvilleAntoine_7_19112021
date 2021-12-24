@@ -57,11 +57,11 @@ const Card = ({ post }) => {
             }, [nbrComment])
         }
         countNumber()
-    })
+    }, [post, nbrComment])
 
     return (
         <article className='post_container' key={post.idposts}>
-            <img src={logo} alt='avatar author' className='logo_user'/>
+            <img src={post.picture} alt='avatar author' className='logo_user'/>
             <div className='post_header'>
                 <h3>{post.name} {post.firstname}</h3>
                 <p>{dateParser(post.createdate)}</p>

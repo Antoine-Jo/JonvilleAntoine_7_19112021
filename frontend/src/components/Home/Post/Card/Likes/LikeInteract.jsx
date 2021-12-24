@@ -55,7 +55,7 @@ const LikeInteract = ({ post }) => {
             }, [nbrLikes])
         }
         countLikes();
-    })
+    }, [nbrLikes, post])
     
     return (
         <>
