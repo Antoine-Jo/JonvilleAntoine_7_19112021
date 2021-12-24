@@ -18,7 +18,7 @@ const FieldProfil = () => {
         console.log(file);
         const data = new FormData();
 
-        data.append('name', file)
+        data.append('image', file)
         data.append('userId', uid)
 
         await axios ({
