@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, updatePost } from '../../../../actions/post_actions';
-import logo from '../../../../images/AvatarP7.png'
 import { UidContext } from '../../../AppContext';
 import { dateParser } from '../../../../services/DateForm';
 import DeleteCard from './DeleteCard';

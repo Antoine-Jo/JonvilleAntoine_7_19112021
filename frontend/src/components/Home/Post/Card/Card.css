@@ -16,9 +16,12 @@
 
 .logo_user {
     width: 60%;
+    height: 5em;
+    object-fit: cover;
     margin: auto;
-    padding-top: 1em;
+    margin-top: 1.5em;
     grid-area: image;
+    border-radius: 1em;
 }
 
 .post_header {
