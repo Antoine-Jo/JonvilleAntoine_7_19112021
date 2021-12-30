@@ -5,7 +5,7 @@
 Ceci est la partie FrontEnd de ce projet, réalisé avec React et Redux
 
 ## Tout d'abord :
-*Cloner le repo
+* Cloner le repo
 
 ## Installation FrontEnd
 
