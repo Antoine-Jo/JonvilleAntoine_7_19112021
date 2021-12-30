@@ -38,7 +38,7 @@ const LoginForm = () => {
 
     return (
         <form onSubmit={handleLogin} className='form_group' id='login_form'>
-            <Field type='text' name='email' value={email} onChange={(e) => setEmail(e.target.value)}>Email</Field>
+            <Field type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}>Email</Field>
             <Field type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}>Mot de passe</Field>
             <p className="error"></p>
             <Button type='submit'>Se Connecter</Button>
