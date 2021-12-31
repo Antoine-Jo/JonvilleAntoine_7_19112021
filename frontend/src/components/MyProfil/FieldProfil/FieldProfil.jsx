@@ -15,7 +15,7 @@ const FieldProfil = () => {
     const [file, setFile] = useState()
 
     const handleAvatar = async () => {
-        console.log(file);
+        // console.log(file);
         const data = new FormData();
 
         data.append('image', file)

@@ -40,22 +40,22 @@ const LikeInteract = ({ post }) => {
         liker()
     }, [post, uid])
 
-    useEffect(() => {
-        const countLikes = async () => {
-            await axios ({
-                method: 'GET',
-                mode: 'cors',
-                withCredentials: true,
-                url: `http://localhost:5000/api/post/${post.idposts}/allLikes`,
-            })
-            .then((res) => {
-                const nbrLikes = res.data.total
-                // console.log(nbrLikes);
-                setNbrLikes(nbrLikes);
-            }, [nbrLikes])
-        }
-        countLikes();
-    })
+    // useEffect(() => {
+    //     const countLikes = async () => {
+    //         await axios ({
+    //             method: 'GET',
+    //             mode: 'cors',
+    //             withCredentials: true,
+    //             url: `http://localhost:5000/api/post/${post.idposts}/allLikes`,
+    //         })
+    //         .then((res) => {
+    //             const nbrLikes = res.data.total
+    //             // console.log(nbrLikes);
+    //             setNbrLikes(nbrLikes);
+    //         }, [nbrLikes])
+    //     }
+    //     countLikes();
+    // })
     
     return (
         <>

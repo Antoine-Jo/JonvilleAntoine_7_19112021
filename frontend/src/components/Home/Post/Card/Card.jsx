@@ -39,7 +39,7 @@ const Card = ({ post }) => {
             })
         }
     }
-
+    
     //TODO Améliorer le useEffect avec le Reducer
     useEffect(() => {
         const countNumber = async () => {
@@ -56,8 +56,8 @@ const Card = ({ post }) => {
             }, [nbrComment])
         }
         countNumber()
-    })
-
+    }, [])
+    
     return (
         <article className='post_container' key={post.idposts}>
             <img src={post.picture} alt='avatar author' className='logo_user'/>
