@@ -56,7 +56,7 @@ const Card = ({ post }) => {
             }, [nbrComment])
         }
         countNumber()
-    }, [])
+    }, [nbrComment, post])
     
     return (
         <article className='post_container' key={post.idposts}>
