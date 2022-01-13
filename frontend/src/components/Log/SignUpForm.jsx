@@ -50,13 +50,14 @@ const SignUpForm = () => {
                 withCredentials: 'true'
             })
             .then((res) => {
-                console.log(res.data.message);
                 validity.innerHTML = res.data.message
                 errors.innerHTML = ''
             })
             .catch((err) => {
+                // console.log(err.response.data.msg);
                 console.log(err.response.data.err)
                 errors.innerHTML = err.response.data.err
+                // errors.innerHTML = err.response.data.msg
                 validity.innerHTML = ''
             }
             )
@@ -72,7 +73,7 @@ const SignUpForm = () => {
             <Field type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}>E-mail</Field>
             {emailErr && <p className="email error">Votre email n'est pas correct</p>}
             <Field type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}>Mot de passe</Field>
-            {pwdErr && <p className="password error">Le mot de passe doit contenir 8 caractères, une lettre, un chiffre.</p>}
+            {pwdErr && <p className="password error">Le mot de passe doit contenir 8 caractères, dont une majuscule, une minuscule, et 1 chiffre</p>}
             <Field type='password' name='ctrl-password' value={ctrlPwd} onChange={(e) => setCtrlPwd(e.target.value)}>Confirmer mot de passe</Field>
             {ctrlPwdErr && <p className='confirm-password error'>Le mot de passe ne correspond pas.</p>}
             <Button type='submit'>S'inscrire</Button>
