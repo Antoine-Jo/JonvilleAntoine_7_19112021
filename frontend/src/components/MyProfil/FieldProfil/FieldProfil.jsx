@@ -38,7 +38,8 @@ const FieldProfil = () => {
             {uid ? (
                 <>
             <img src={userData.picture ? userData.picture : avatar} className="field_avatar" alt="Avatar de l'utilisateur" />
-            <input type='file' name='name' onChange={e => setFile(e.target.files[0])} className='input_picture'/>
+            <label htmlFor="picture">Changez votre photo de profil</label>
+            <input id='picture' type='file' name='name' onChange={e => setFile(e.target.files[0])} className='input_picture'/>
             <button onClick={handleAvatar} className='btn_picture'>Modifier l'avatar</button>
             <h3 className='field_title'>{userData.name}</h3>
             <h3 className='field_title'>{userData.firstname}</h3>

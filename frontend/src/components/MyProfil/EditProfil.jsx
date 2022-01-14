@@ -11,7 +11,7 @@ const EditProfil = () => {
     return (
         <div className='profil_container'>
             <div className='profil_header'>
-                <Link to='/home'><i className="fas fa-arrow-circle-left profil_closed"></i></Link>
+                <Link to='/home' aria-label='return'><i className="fas fa-arrow-circle-left profil_closed"></i></Link>
                 {uid ? (
                     <h2 className='profil_title'>Mon profil</h2>
                 ) : (

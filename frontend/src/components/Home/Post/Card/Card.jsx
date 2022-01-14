@@ -74,8 +74,10 @@ const Card = ({ post }) => {
             {updateModal === false && <p className='post_text'>{post.text}</p>}
             {updateModal && (
                 <div className='edit_container'>
-                <textarea defaultValue={post.text} onChange={e => setEditMessage(e.target.value)} className='edit_text'/>
+                <label htmlFor="post">
+                <textarea defaultValue={post.text} onChange={e => setEditMessage(e.target.value)} className='edit_text' id='post'/>
                 <button onClick={updateText} className='edit_btn'>Envoyer les modifications</button>
+                </label>
                 </div>
             )}
             <footer className='post_footer'>
@@ -86,8 +88,10 @@ const Card = ({ post }) => {
                 {modalComment &&
                     <div className='comments_bloc'>
                         <CommentCard post={post} key={post.idposts} />
-                        <textarea placeholder='Ajouter un commentaire' value={addCom} onChange={e => setAddCom(e.target.value)} className='create_comment' />
+                        <label htmlFor="comment">
+                        <textarea id='comment' placeholder='Ajouter un commentaire' value={addCom} onChange={e => setAddCom(e.target.value)} className='create_comment' />
                         <button className='btn_comment' onClick={createComment}>Envoyer</button>
+                        </label>
                     </div> 
                 } 
             </footer>

@@ -51,8 +51,10 @@ const EditComment = ({ comment, post }) => {
             )}
             {isAuthor && edit && (
                 <>
-                    <textarea defaultValue={comment.text} onChange={e => setText(e.target.value)} className='edit_comment_text' />
+                    <label htmlFor="edit">
+                    <textarea id='edit' defaultValue={comment.text} onChange={e => setText(e.target.value)} className='edit_comment_text' />
                     <button onClick={handleEdit} className='edit_comment_btn'>Envoyer les modifications</button>
+                    </label>
                 </>
             )}
         </div>

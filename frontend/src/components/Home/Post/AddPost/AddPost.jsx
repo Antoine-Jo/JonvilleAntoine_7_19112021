@@ -19,8 +19,10 @@ const AddPost = () => {
 
     return (
         <div className='add_container'>
+            <label htmlFor="message">
             <textarea className='add_text' name='message' id='message' placeholder='Poster votre message' value={message} onChange={(e) => setMessage(e.target.value)}/>
             <button className='send' onClick={handlePost}>Envoyer</button>
+            </label>
         </div>
     );
 };
