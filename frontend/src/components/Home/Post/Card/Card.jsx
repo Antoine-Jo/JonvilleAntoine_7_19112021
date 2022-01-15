@@ -9,6 +9,7 @@ import { addComment, getComments } from '../../../../actions/comment_actions';
 import axios from 'axios';
 import LikeInteract from './Likes/LikeInteract';
 import './Card.css';
+import avatar from "../../../../images/AvatarP7.png"
 
 const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer)
@@ -60,7 +61,7 @@ const Card = ({ post }) => {
     
     return (
         <article className='post_container' key={post.idposts}>
-            <img src={post.picture} alt='avatar author' className='logo_user'/>
+            <img src={post.picture ? post.picture : avatar} alt='avatar author' className='logo_user'/>
             <div className='post_header'>
                 <h3>{post.name} {post.firstname}</h3>
                 <p>{dateParser(post.createdate)}</p>
